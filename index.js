@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 // const request = require("request");
 // const controller = require("./api/controller");
 // const dao = require("./api/dao");
-const errorController = require("./api/error");
+// const errorController = require("./api/error");
 const router = require("./api/router");
 
 // const User = require("./models/user");
@@ -16,8 +16,8 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.set("view engine", "ejs"); //express에 스스로를 자동으로 등록
-// app.set("views", "views"); //default긴하지만 그래도 적어줌
+app.set("view engine", "ejs"); //express에 스스로를 자동으로 등록
+app.set("views", "views"); //default긴하지만 그래도 적어줌
 
 // app.use((req,res,next)=>{ //미들웨어 등록, 필요한 코드지만 
 //     User.findByPk(1) // 아직 코드를 완벽하게 이해 못해서 주석처리함.
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //     .catch((err) => console.log(err));
 // });
 app.use(router);
-app.use(errorController.get404);
+// app.use(errorController.get404);
 /* Socket */
 
 // const server = http.createServer(app);
