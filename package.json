@@ -1,13 +1,12 @@
 {
   "name": "its-a-workout",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "B1A3",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.1",
@@ -15,7 +14,18 @@
     "express": "^4.18.2",
     "json": "^11.0.0",
     "method-override": "^3.0.0",
-    "nodemon": "^2.0.20",
     "request": "^2.88.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/its-a-workout/its-a-workout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/its-a-workout/its-a-workout/issues"
+  },
+  "homepage": "https://github.com/its-a-workout/its-a-workout#readme",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
