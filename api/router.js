@@ -18,6 +18,9 @@ module.exports = (app) => {
 
     // 랭킹 페이지
     app.get("/rank/{username}", index.rank);
+
+    // 미로 테스트용
+    app.get("/test", index.test);
 }
 
 /* TODO: 우선 포맷 정리하느라 주석 처리 했는데 같이 보면서 필요한 거 위에다 추가하면 될 거 같아! */

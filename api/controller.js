@@ -22,6 +22,10 @@ exports.rank = async (req, res) => {
 
 }
 
+exports.test = async (req, res) => {
+    return res.render("../public/html/test.ejs", {});
+}
+
 
 /* TODO: 우선 충돌 날까봐 주석 처리 해뒀어 */
 
