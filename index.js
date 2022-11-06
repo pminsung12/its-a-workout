@@ -1,11 +1,16 @@
 // 서버 소켓 작업 및 서버 실행
 const path = require("path");
 const http = require("http");
+
+
+
 // const request = require("request");
 // const controller = require("./api/controller");
 // const dao = require("./api/dao");
 // const errorController = require("./api/error");
 // const router = require("./api/router");
+
+// const sequelize = require("./config/database");
 // const User = require("./models/user");
 
 const express = require("./config/express");
@@ -13,17 +18,29 @@ const app = express();
 
 /* TODO: express 관련해서 세팅해놓은 거 express.js 파일에 옮겨놨어! */
 
-// app.use((req,res,next)=>{ //미들웨어 등록, 필요한 코드지만 
-//     User.findByPk(1) // 아직 코드를 완벽하게 이해 못해서 주석처리함.
-//     .then((user) => {
-//     req.user = user;
-//     next(); // 다음 미들웨어로
+// sequelize
+//     // .sync({ force: true }) //강제로 덮어쓰도록
+//     .sync()
+//     .then((result) => {
+//         return User.findByPk(1); //유저가 있다면
+//         //console.log(result);
 //     })
-//     .catch((err) => console.log(err));
-// });
-// app.use(router);
-// app.use(errorController.get404);
+//     .then((user) => {
+//         if (!user) {
+//             return User.create({ name: "Max", email: "test@test.com" });
+//         }
+//         return user; //즉시 사용자를 확인하는 promise
+//     })
+//     .then((user) => {
+//         // console.log(user);
+//         return user.createCart();
+//     })
+//     .then((cart) => {
+//         app.listen(3000); // 서버 수신
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     }); //
 
-// const server = http.createServer(app);
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

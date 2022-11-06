@@ -4,14 +4,14 @@ const dao = require("./dao");
 const User = require("../models/user");
 
 exports.main = async (req, res) => {
-    return res.render("../public/html/intro.ejs", {});
+    return res.render("intro", {});
 }
 
 exports.play = async (req, res) => {
     const nickname = req.query.nickname;
     const level = req.params.level;
     console.log('nickname, level >', nickname, level);
-    return res.render("../public/html/game.ejs", {nickname, level});
+    return res.render("game", { nickname, level });
 }
 
 exports.save = async (req, res) => {
@@ -19,11 +19,11 @@ exports.save = async (req, res) => {
 }
 
 exports.rank = async (req, res) => {
-
+    return res.render("rank", { pageTitle: "Ranking System" });
 }
 
 exports.test = async (req, res) => {
-    return res.render("../public/html/test.ejs", {});
+    return res.render("test", { pageTitle: "Tutorial" });
 }
 
 

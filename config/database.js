@@ -12,3 +12,12 @@
 // })
 
 // module.exports = { pool: pool };
+
+const Sequelize = require("sequelize");
+
+// const sequelize = new Sequelize("테이블 이름", "root", "비밀번호", {
+//   dialect: "mysql",
+//   host: "localhost",
+// });
+
+module.exports = sequelize;

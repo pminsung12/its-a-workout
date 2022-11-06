@@ -1,78 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>너, 운동된 거야</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="main" id="main">
+      <img src="./img/logo.png" id="logo" />
 
-        <img src="./img/logo.png" id="logo">
+      <h1>너, 운동된 거야</h1>
+      <h3>동작을 취해 캐릭터를 움직여 미로를 탈출해보세요!</h3>
 
-        <h1>너, 운동된 거야</h1>
-        <h3>동작을 취해 캐릭터를 움직여 미로를 탈출해보세요!</h3>
+      <div class="name">
+        <h4>👀 이름을 입력하세요.</h4>
+        <input type="text" name="ID" maxlength="20" id="nameBox" />
+      </div>
 
-        <div class="name">
-            <h4>👀 이름을 입력하세요.</h4>
-            <input type="text" name="ID" maxlength="20" id="nameBox">
-        </div>
+      <div id="greet"></div>
 
-        <div id="greet"></div>
+      <div class="level">
+        <h4>🔥 레벨을 선택하세요.</h4>
+        <table id="levelTB" selected="">
+          <tr>
+            <td id="tdA">난이도 상</td>
+            <td>미로의 두께가 넓어요</td>
+          </tr>
+          <tr>
+            <td id="tdB">난이도 중</td>
+            <td>미로의 두께가 적당해요</td>
+          </tr>
+          <tr>
+            <td id="tdC">난이도 하</td>
+            <td>미로의 두께가 얇아요</td>
+          </tr>
+        </table>
+      </div>
 
-        <div class="level">
-            <h4>🔥 레벨을 선택하세요.</h4>
-             <table id="levelTB" selected="">
-            	<tr>
-            	    <td id="tdA">난이도 상</td>
-            	    <td>미로의 두께가 넓어요</td>
-            	</tr>
-            	<tr>
-            	    <td id="tdB">난이도 중</td>
-            	    <td>미로의 두께가 적당해요</td>
-            	</tr>
-            	<tr>
-            	    <td id="tdC">난이도 하</td>
-            	    <td>미로의 두께가 얇아요</td>
-            	</tr>
-             </table>
-        </div>
+      <button id="startBtn" onclick="startGame();">시작</button>
 
-        <button id="startBtn" onclick="startGame();">시작</button>
-
-        <div class="menu">
-            <button id="tutoBtn" href="#tutorial">튜토리얼</button>
-            <button id="rankBtn" >랭킹 보러가기</button>
-        </div>
+      <div class="menu">
+        <button id="tutoBtn" href="#tutorial">튜토리얼</button>
+        <button id="rankBtn">랭킹 보러가기</button>
+      </div>
     </div>
 
-    <section id="tutorial">
-        (튜토리얼 내용)
-    </section>
+    <section id="tutorial">(튜토리얼 내용)</section>
 
     <script>
-        $("#levelTB tr").click(function(){
-            const tb = document.getElementById('levelTB');
-        	var td = $(this).children();
-        	var level = td.text()[4];
-        	if (level == "상") tb.setAttribute("selected", 10);
-        	else if (level == "중") tb.setAttribute("selected", 7);
-        	else if (level == "하") tb.setAttribute("selected", 5);
-        });
-
-        function startGame() {
-            const name = document.getElementById('nameBox').value;
-            const level = document.getElementById('levelTB').getAttribute("selected");
-            console.log(name, level);
-            location.href = `/play/${level}?nickname=${name}`;
-        }
+      $("#levelTB tr").click(function () {
+        const tb = document.getElementById("levelTB");
+        var td = $(this).children();
+        var level = td.text()[4];
+        if (level == "상") tb.setAttribute("selected", 10);
+        else if (level == "중") tb.setAttribute("selected", 7);
+        else if (level == "하") tb.setAttribute("selected", 5);
+      });
+      function startGame() {
+        const name = document.getElementById("nameBox").value;
+        const level = document
+          .getElementById("levelTB")
+          .getAttribute("selected");
+        console.log(name, level);
+        location.href = `/play/${level}?nickname=${name}`;
+      }
     </script>
-</body>
+  </body>
 </html>
