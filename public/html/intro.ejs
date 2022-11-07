@@ -53,7 +53,7 @@
 
       <div class="menu">
         <button id="tutoBtn" href="#tutorial">튜토리얼</button>
-        <button id="rankBtn">랭킹 보러가기</button>
+        <button id="rankBtn" onclick="showRank()">랭킹 보러가기</button>
       </div>
     </div>
 
@@ -75,6 +75,10 @@
           .getAttribute("selected");
         console.log(name, level);
         location.href = `/play/${level}?nickname=${name}`;
+      }
+      function showRank() {
+        const name = document.getElementById("nameBox").value;
+        location.href = `/rank/?nickname=${name}`;
       }
     </script>
   </body>

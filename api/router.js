@@ -17,7 +17,7 @@ module.exports = (app) => {
     app.post("/play/save", index.save);
 
     // 랭킹 페이지
-    app.get("/rank/{username}", index.rank);
+    app.get("/rank", index.rank);
 
     // 미로 테스트용
     app.get("/test", index.test);
