@@ -1,1 +1,43 @@
-<h1><%= pageTitle %></h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>너, 운동된 거야</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+  </head>
+
+  <body>
+    <h1><%= pageTitle %></h1>
+
+    <main>
+      <% if (users.length > 0) { %>
+      <div class="grid">
+        <% for (let user of users) { %>
+        <article>
+          <header>
+            <h1><%= user.name %></h1>
+          </header>
+          <div>
+            <h2><%= user.record %>초</h2>
+          </div>
+        </article>
+        <% } %>
+      </div>
+      <% } else { %>
+      <h1>No Users Found!</h1>
+      <% } %>
+    </main>
+  </body>
+</html>
