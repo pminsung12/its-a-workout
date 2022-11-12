@@ -1,4 +1,14 @@
 /* DB 연동 */
+const mysql = require('mysql2');
+
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    database: 'maze_workout', // 스키마 이름
+    password: 'pms1227' // 비밀번호
+})
+
+module.exports = pool.promise(); // 비동기
 // const mysql = require("mysql2/promise");
 // require('dotenv').config();
 
@@ -13,11 +23,11 @@
 
 // module.exports = { pool: pool };
 
-const Sequelize = require("sequelize");
+// const Sequelize = require("sequelize");
 
 // const sequelize = new Sequelize("테이블 이름", "root", "비밀번호", {
 //   dialect: "mysql",
 //   host: "localhost",
 // });
 
-module.exports = sequelize;
+// module.exports = sequelize;

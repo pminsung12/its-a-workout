@@ -2,8 +2,7 @@
 const path = require("path");
 const http = require("http");
 
-
-
+const db = require('./config/database');
 // const request = require("request");
 // const controller = require("./api/controller");
 // const dao = require("./api/dao");
@@ -16,7 +15,13 @@ const http = require("http");
 const express = require("./config/express");
 const app = express();
 
-/* TODO: express 관련해서 세팅해놓은 거 express.js 파일에 옮겨놨어! */
+db.execute('SELECT * FROM user')
+    .then(result => {
+        console.log(result[0], result[1]);
+    })
+    .catch(err => {
+        console.log(err);
+    });
 
 // sequelize
 //     // .sync({ force: true }) //강제로 덮어쓰도록

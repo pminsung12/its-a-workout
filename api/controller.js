@@ -19,7 +19,17 @@ exports.save = async (req, res) => {
 }
 
 exports.rank = async (req, res) => {
-    return res.render("rank", { pageTitle: "Ranking System" });
+    User.fetchAll()
+        .then(([rows, fieldData]) => {
+            res.render("rank", {
+                pageTitle: "Ranking System",
+                users: rows,
+            });
+        })
+        .catch(err => console.log(err));
+    return
+
+
 }
 
 exports.test = async (req, res) => {
