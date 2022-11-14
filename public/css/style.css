@@ -3,17 +3,23 @@ html, body {
     text-align: center;
     width: 100%;
     height: 100%;
+    background-color: #2d3d77;
 }
 
 .main {
-    width: 100%;
+    width: 90%;
     height: 100%;
-    padding: 20px 0;
+    margin-top: 60px;
+    margin-bottom: 80px;
+    margin-left: 5%;
+    background-color: white;
+    border-radius: 20px;
 }
 
 #logo {
     width: 100px;
     border-radius: 70%;
+    margin-top: -35px;
     animation: rotate_img 3s linear infinite;
 }
 
@@ -57,21 +63,17 @@ td {
     background-color: #5656e0;
 }
 
-#startBtn {
+#startBtn, #tutoBtn, #rankBtn {
     border: 0;
+    border-radius: 10px;
     outline: 0;
+    width: 300px;
     margin: 5px;
     padding: 15px 50px;
     font-size: 17px;
 }
 
-#startBtn:hover {
+#startBtn:hover, #tutoBtn:hover, #rankBtn:hover {
     background: black;
     color: white;
-}
-
-#tutoBtn, #rankBtn {
-    margin: 10px 5px;
-    padding: 10px;
-    font-size: 17px;
 }

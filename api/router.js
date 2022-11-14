@@ -10,6 +10,9 @@ module.exports = (app) => {
     // 맨 처음 화면
     app.get("/", index.main);
 
+    // 튜토리얼 페이지
+    app.get("/tutorial", index.tutorial);
+
     // 게임 페이지
     app.get("/play/:level", index.play);
 

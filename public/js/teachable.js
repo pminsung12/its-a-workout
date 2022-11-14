@@ -133,5 +133,3 @@ function drawPose(pose) {
 }
 
 init();
-
-

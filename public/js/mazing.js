@@ -6,7 +6,7 @@ function Position(x, y) {
 Position.prototype.toString = function() {
   return this.x + ":" + this.y;
 };
-  
+
 function Mazing(id) {
   // bind to HTML element
   this.mazeContainer = document.getElementById(id);
@@ -16,16 +16,16 @@ function Mazing(id) {
 
   this.mazeMessage = document.createElement("div");
   this.mazeMessage.id = "maze_message";
-  
+
   this.heroScore = this.mazeContainer.getAttribute("data-steps") - 2;
 
   this.maze = [];
   this.heroPos = {};
   this.heroHasKey = false;
   this.childMode = false;
-  
+
   this.utter = null;
-  
+
   for (i = 0; i < this.mazeContainer.children.length; i++) {
     for (j = 0; j < this.mazeContainer.children[i].children.length; j++) {
       var el =  this.mazeContainer.children[i].children[j];
@@ -37,7 +37,7 @@ function Mazing(id) {
       }
     }
   }
-  
+
   var mazeOutputDiv = document.createElement("div");
   mazeOutputDiv.id = "maze_output";
   mazeOutputDiv.appendChild(this.mazeScore);
@@ -58,7 +58,7 @@ Mazing.prototype.enableSpeech = function() {
   this.utter = new SpeechSynthesisUtterance()
   this.setMessage(this.mazeMessage.innerText);
 };
-  
+
 Mazing.prototype.setMessage = function(text) {
   this.mazeMessage.innerHTML = text;
   this.mazeScore.innerHTML = this.heroScore;
@@ -68,13 +68,13 @@ Mazing.prototype.setMessage = function(text) {
     window.speechSynthesis.speak(this.utter);
   }
 }
-  
+
 Mazing.prototype.heroTakeTreasure = function() {
   this.maze[this.heroPos].classList.remove("nubbin");
   this.heroScore += 10;
   this.setMessage("yay, treasure!");
 }
-  
+
 Mazing.prototype.heroTakeKey = function() {
   this.maze[this.heroPos].classList.remove("key");
   this.heroHasKey = true;
@@ -82,25 +82,25 @@ Mazing.prototype.heroTakeKey = function() {
   this.mazeScore.classList.add("has-key");
   this.setMessage("you now have the key!");
 }
-  
+
 Mazing.prototype.gameOver = function(text) {
   // de-activate control keys
   document.removeEventListener("keydown", this.keyPressHandler, false);
   this.setMessage(text);
   this.mazeContainer.classList.add("finished");
 };
-  
+
 Mazing.prototype.heroWins = function() {
   this.mazeScore.classList.remove("has-key");
   this.maze[this.heroPos].classList.remove("door");
   this.heroScore += 50;
   this.gameOver("you finished !!!");
 }
-  
+
 Mazing.prototype.tryMoveHero = function(pos) {
-  
+
   if ("object" !== typeof this.maze[pos]) return;
-  
+
   var nextStep = this.maze[pos].className;
 
   // before moving
@@ -123,7 +123,7 @@ Mazing.prototype.tryMoveHero = function(pos) {
       return;
     }
   }
-  
+
   // move hero one step
   this.maze[this.heroPos].classList.remove("hero");
   this.maze[pos].classList.add("hero");
@@ -155,7 +155,7 @@ Mazing.prototype.tryMoveHero = function(pos) {
     }
   }
 }
-     
+
 // 디버깅을 위해 키보드로도 움직일수 있게 함
 Mazing.prototype.mazeKeyPressHandler = function(e) {
   var tryPos = new Position(this.heroPos.x, this.heroPos.y);
@@ -181,7 +181,7 @@ Mazing.prototype.mazeKeyPressHandler = function(e) {
   this.tryMoveHero(tryPos);
   e.preventDefault();
 }
-  
+
 Mazing.prototype.setChildMode = function() {
   this.childMode = true;
   this.heroScore = 0;

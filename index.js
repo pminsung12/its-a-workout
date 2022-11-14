@@ -1,17 +1,4 @@
-// 서버 소켓 작업 및 서버 실행
-const path = require("path");
-const http = require("http");
-
 const db = require('./config/database');
-// const request = require("request");
-// const controller = require("./api/controller");
-// const dao = require("./api/dao");
-// const errorController = require("./api/error");
-// const router = require("./api/router");
-
-// const sequelize = require("./config/database");
-// const User = require("./models/user");
-
 const express = require("./config/express");
 const app = express();
 

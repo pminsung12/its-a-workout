@@ -1,10 +1,13 @@
-// 요청 처리 작업, 모든 모듈들
 const request = require("request");
 const dao = require("./dao");
 const User = require("../models/user");
 
 exports.main = async (req, res) => {
     return res.render("intro", {});
+}
+
+exports.tutorial = async (req, res) => {
+    return res.render("tutorial", {});
 }
 
 exports.play = async (req, res) => {
@@ -27,9 +30,7 @@ exports.rank = async (req, res) => {
             });
         })
         .catch(err => console.log(err));
-    return
-
-
+    return;
 }
 
 exports.test = async (req, res) => {
