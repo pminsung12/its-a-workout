@@ -2,13 +2,13 @@ const db = require('./config/database');
 const express = require("./config/express");
 const app = express();
 
-db.execute('SELECT * FROM user')
-    .then(result => {
-        console.log(result[0], result[1]);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+// db.execute('SELECT * FROM user')
+//     .then(result => {
+//         console.log(result[0], result[1]);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     });
 
 // sequelize
 //     // .sync({ force: true }) //강제로 덮어쓰도록

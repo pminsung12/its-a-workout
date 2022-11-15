@@ -13,7 +13,6 @@ exports.tutorial = async (req, res) => {
 exports.play = async (req, res) => {
     const nickname = req.query.nickname;
     const level = req.params.level;
-    console.log('nickname, level >', nickname, level);
     return res.render("game", { nickname, level });
 }
 
@@ -22,15 +21,11 @@ exports.save = async (req, res) => {
 }
 
 exports.rank = async (req, res) => {
-    User.fetchAll()
-        .then(([rows, fieldData]) => {
-            res.render("rank", {
-                pageTitle: "Ranking System",
-                users: rows,
-            });
-        })
-        .catch(err => console.log(err));
-    return;
+    const scoreList = await dao.getScoreList();
+    return res.render("rank", {
+        pageTitle: "Ranking System",
+        users: scoreList
+    });
 }
 
 exports.test = async (req, res) => {
