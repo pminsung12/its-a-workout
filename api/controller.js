@@ -17,7 +17,12 @@ exports.play = async (req, res) => {
 }
 
 exports.save = async (req, res) => {
-
+    const nickname = req.body.name;
+    const score = req.body.score;
+    const level = Number(req.body.level);
+    // Save in DB
+    const saveScore = await dao.saveScore(nickname, score, level);
+    return res.render("rank", {});
 }
 
 exports.rank = async (req, res) => {

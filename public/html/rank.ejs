@@ -19,25 +19,6 @@
   </head>
 
   <body>
-    <h1><%= pageTitle %></h1>
 
-    <main>
-      <% if (users.length > 0) { %>
-      <div class="grid">
-        <% for (let user of users) { %>
-        <article>
-          <header>
-            <h1><%= user.name %></h1>
-          </header>
-          <div>
-            <h2><%= user.record %>초</h2>
-          </div>
-        </article>
-        <% } %>
-      </div>
-      <% } else { %>
-      <h1>No Users Found!</h1>
-      <% } %>
-    </main>
   </body>
 </html>

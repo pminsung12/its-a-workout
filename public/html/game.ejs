@@ -45,7 +45,6 @@
             var Maze, MazeGame;
 
             const makeMaze = (id, width, height, speech = false) => {
-                console.log("width, height >", width, height);
                 Maze = new MazeBuilder(width, height);
                 Maze.placeKey();
                 Maze.display(id);
@@ -66,12 +65,36 @@
                 <h3>플레이어: <%= nickname %> 님</h3>
             </div>
             <div class="menu">
-                <div><button id="rankBtn" onclick="showRank();">랭킹 보기</button></div>
-                <div><button id="startBtn" onclick="startGame();">메인으로</button></div>
+                <div><button id="rankBtn" onclick="showRank();">내 랭킹 보기</button></div>
+                <div><button id="startBtn" onclick="goIntro();">메인으로</button></div>
             </div>
         </div>
     </div>
-
 </div>
+
+<script>
+    function showRank() {
+        const content = document.getElementsByClassName("content")[0].innerText;
+        const score = Number(content.slice(17));
+        $.ajax({
+            type: "POST",
+            url: "/play/save",
+            data: {
+                name: `<%= nickname %>`,
+                score: score,
+                level: `<%= level %>`
+            },
+            error: function(){
+                alert("에러가 발생했습니다");
+            },
+            success:function(data){
+                location.href = "/rank/?nickname=<%= nickname %>";
+            }
+        })
+    }
+    function goIntro() {
+        location.href = `/`;
+    }
+</script>
 </body>
 </html>
