@@ -62,6 +62,7 @@ Mazing.prototype.enableSpeech = function() {
 Mazing.prototype.setMessage = function(text) {
   this.mazeMessage.innerHTML = text;
   this.mazeScore.innerHTML = this.heroScore;
+
   if (this.utter) {
     this.utter.text = text;
     window.speechSynthesis.cancel();
@@ -88,6 +89,12 @@ Mazing.prototype.gameOver = function(text) {
   document.removeEventListener("keydown", this.keyPressHandler, false);
   this.setMessage(text);
   this.mazeContainer.classList.add("finished");
+
+  // modal 띄우기
+  const modal = document.getElementById("modal");
+  const content = document.getElementsByClassName("content");
+  content[0].innerHTML += `<h3>스코어: ${this.heroScore}</h3>`
+  modal.style.display = "flex";
 };
 
 Mazing.prototype.heroWins = function() {

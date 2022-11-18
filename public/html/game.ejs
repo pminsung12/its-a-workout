@@ -51,8 +51,25 @@
                 Maze.display(id);
                 MazeGame = new Mazing("maze");
             };
-            makeMaze("maze_container", 18, Number(<%= level %>)); // 난이도에 맞게 수정 필요
+            makeMaze("maze_container", 18, Number(<%= level %>));
         </script>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2>Success!</h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">
+                <h3>플레이어: <%= nickname %> 님</h3>
+            </div>
+            <div class="menu">
+                <div><button id="rankBtn" onclick="showRank();">랭킹 보기</button></div>
+                <div><button id="startBtn" onclick="startGame();">메인으로</button></div>
+            </div>
+        </div>
     </div>
 
 </div>
