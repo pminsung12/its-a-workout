@@ -19,6 +19,31 @@
   </head>
 
   <body>
+  <div class="main" id="main">
+    <img src="../img/logo.png" id="logo" />
+    <h1>너, 운동된 거야</h1>
+    <h3>랭킹을 확인해봅시다!</h3>
+    <br>
+    <main>
+      <% if (users.length > 0) { %>
+        <div class="grid">
+          <% for (let user of users) { %>
+            <article>
+              <header>
+                <h1><%= user.userName %></h1>
+              </header>
+              <div>
+                <h2><%= user.score%>초</h2>
+              </div>
+            </article>
+          <% } %>
+        </div>
+      <% } else { %>
+        <h1>No Users Found!</h1>
+      <% } %>
+    </main>
+  </div>
+
 
   </body>
 </html>

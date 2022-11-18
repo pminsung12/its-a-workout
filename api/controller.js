@@ -27,6 +27,7 @@ exports.save = async (req, res) => {
 
 exports.rank = async (req, res) => {
     const scoreList = await dao.getScoreList();
+    console.log(scoreList);
     return res.render("rank", {
         pageTitle: "Ranking System",
         users: scoreList
