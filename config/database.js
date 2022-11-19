@@ -10,10 +10,10 @@ const pool = mysql.createPool({
     database: process.env.MYSQL_DATABASE
 })
 
-module.exports = {
-    pool: pool
-}
-
+// module.exports = {
+//     pool: pool
+// }
+module.exports = pool;
 // const Sequelize = require("sequelize");
 
 // const sequelize = new Sequelize("테이블 이름", "root", "비밀번호", {

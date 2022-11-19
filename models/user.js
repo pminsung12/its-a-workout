@@ -18,16 +18,27 @@
 const db = require('../config/database');
 
 module.exports = class User {
-    constructor(id, name, record) {
-        this.id = id;
-        this.name = name;
-        this.record = record;
+    constructor(userIndex, userName, score) {
+        this.userIndex = userIndex;
+        this.userName = userName;
+        this.score = score;
     }
-    save() {
-
+    save(level) {
+        if (level === 10) {
+            return db.execute('INSERT INTO hard(userName,score,date) VALUES(?,?,)',
+                [this.userName, this.score, CURDATE()]);
+        }
+        else if (level === 8) {
+            return db.execute('INSERT INTO normal(userName,score,date) VALUES(?,?,?)',
+                [this.userName, this.score, CURDATE()]);
+        }
+        if (level === 7) {
+            return db.execute('INSERT INTO easy(userName,score,date) VALUES(?,?,CURDATE())',
+                [this.userName, this.score]);
+        }
     }
 
     static fetchAll() {
-        return db.execute('SELECT * FROM user');
+        return db.execute('SELECT * FROM easy');
     }
 };
