@@ -19,6 +19,125 @@
   </head>
 
   <body>
+    <div class="main" id="main">
+      <img src="../img/logo.png" id="logo" />
+      <h1>너, 운동된 거야</h1>
+      <h3>랭킹을 확인해봅시다!</h3>
+      <br>
+        <main>
+          <div class="wrapper">
+            <div class="lboard_section">
+              <div class="lboard_tabs">
+                <div class="tabs">
+                  <ul>
+                    <li data-li="today">Easy</li>
+                    <li class="active" data-li="month">Normal</li>
+                    <li data-li="year">Hard</li>
+                  </ul>
+                </div>
+              </div>
+          
+              <div class="lboard_wrap">
+                <div class="lboard_item today" style="display: none;">
+                  <% if (users.length > 0) { %>
+                          <% for (let i=0;i<users.length;i++) { %>
+                            <% user=users[i]%>
+                  <div class="lboard_mem">
+                    <div class="img">
+                      <img src="https://mblogthumb-phinf.pstatic.net/20160817_259/retspe_14714118890125sC2j_PNG/%C7%C7%C4%AB%C3%F2_%281%29.png?type=w800" alt="picture_1">
+                    </div>
+                    <div class="name_bar">
+                      <p><span><%= i+1 %>.</span> <%= user.userName %> </p>
+                      <div class="bar_wrap">
+                        <div class="inner_bar" style="width: 95%"></div>
+                      </div>
+                    </div>
+                    <div class="points">
+                      <%= user.score %> points
+                    </div>
+                  </div>
+                  <% } %>
+                        <% } else { %>
+                          <h1>No Users Found!</h1>
+                        <% } %>
+                </div>
+                <div class="lboard_item month" style="display: block;">
+                  <div class="lboard_mem">
+                    <div class="img">
+                      <img src="pic_2.png" alt="picture_2">
+                    </div>
+                    <div class="name_bar">
+                      <p><span>1.</span> Alex Mike</p>
+                      <div class="bar_wrap">
+                        <div class="inner_bar" style="width: 95%"></div>
+                      </div>
+                    </div>
+                    <div class="points">
+                      1195 points
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="lboard_item year" style="display: none;">
+                  <div class="lboard_mem">
+                    <div class="img">
+                      <img src="pic_5.png" alt="picture_5">
+                    </div>
+                    <div class="name_bar">
+                      <p><span>1.</span>Scarlett Angela</p>
+                      <div class="bar_wrap">
+                        <div class="inner_bar" style="width: 90%"></div>
+                      </div>
+                    </div>
+                    <div class="points">
+                      2195 points
+                    </div>
+                  </div>
+                  
+                </div>
+
+              </div>
+            </div>
+          </div>	
+        
+        <script>
+        var tabs = document.querySelectorAll(".lboard_tabs ul li");
+        var today = document.querySelector(".today");
+        var month = document.querySelector(".month");
+        var year = document.querySelector(".year");
+        var items = document.querySelectorAll(".lboard_item");
+        
+        tabs.forEach(function(tab){
+          tab.addEventListener("click", function(){
+            var currenttab = tab.getAttribute("data-li");
+            
+            tabs.forEach(function(tab){
+              tab.classList.remove("active");
+            })
+        
+            tab.classList.add("active");
+        
+            items.forEach(function(item){
+              item.style.display = "none";
+            })
+        
+            if(currenttab == "today"){
+              today.style.display = "block";
+            }
+            else if(currenttab == "month"){
+              month.style.display = "block";
+            }
+            else{
+              year.style.display = "block";
+            }
+        
+          })
+        })
+          </script>
+        </main>
+      </div>
+    </body>
+  <!-- <body>
   <div class="main" id="main">
     <img src="../img/logo.png" id="logo" />
     <h1>너, 운동된 거야</h1>
@@ -46,4 +165,4 @@
 
 
   </body>
-</html>
+</html> -->
