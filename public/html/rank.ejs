@@ -39,9 +39,9 @@
           
               <div class="lboard_wrap">
                 <div class="lboard_item today" style="display: none;">
-                  <% if (users.length > 0) { %>
-                          <% for (let i=0;i<users.length;i++) { %>
-                            <% user=users[i]%>
+                  <% if (easyUsers.length > 0) { %>
+                          <% for (let i=0;i<easyUsers.length;i++) { %>
+                            <% user=easyUsers[i]%>
                   <div class="lboard_mem">
                     <div class="img">
                       <img src="https://mblogthumb-phinf.pstatic.net/20160817_259/retspe_14714118890125sC2j_PNG/%C7%C7%C4%AB%C3%F2_%281%29.png?type=w800" alt="picture_1">
@@ -62,38 +62,50 @@
                         <% } %>
                 </div>
                 <div class="lboard_item month" style="display: block;">
+                  <% if (normalUsers.length > 0) { %>
+                    <% for (let i=0;i<normalUsers.length;i++) { %>
+                      <% user=normalUsers[i]%>
                   <div class="lboard_mem">
                     <div class="img">
                       <img src="pic_2.png" alt="picture_2">
                     </div>
                     <div class="name_bar">
-                      <p><span>1.</span> Alex Mike</p>
+                      <p><span><%= i+1 %>.</span> <%= user.userName %> </p>
                       <div class="bar_wrap">
                         <div class="inner_bar" style="width: 95%"></div>
                       </div>
                     </div>
                     <div class="points">
-                      1195 points
+                      <%= user.score %> points
                     </div>
                   </div>
-                  
+                  <% } %>
+                        <% } else { %>
+                          <h1>No Users Found!</h1>
+                        <% } %>
                 </div>
                 <div class="lboard_item year" style="display: none;">
+                  <% if (hardUsers.length > 0) { %>
+                    <% for (let i=0;i<hardUsers.length;i++) { %>
+                      <% user=hardUsers[i]%>
                   <div class="lboard_mem">
                     <div class="img">
                       <img src="pic_5.png" alt="picture_5">
                     </div>
                     <div class="name_bar">
-                      <p><span>1.</span>Scarlett Angela</p>
+                      <p><span><%= i+1 %>.</span> <%= user.userName %> </p>
                       <div class="bar_wrap">
                         <div class="inner_bar" style="width: 90%"></div>
                       </div>
                     </div>
                     <div class="points">
-                      2195 points
+                      <%= user.score %> points
                     </div>
                   </div>
-                  
+                  <% } %>
+                        <% } else { %>
+                          <h1>No Users Found!</h1>
+                        <% } %>
                 </div>
 
               </div>
@@ -137,32 +149,4 @@
         </main>
       </div>
     </body>
-  <!-- <body>
-  <div class="main" id="main">
-    <img src="../img/logo.png" id="logo" />
-    <h1>너, 운동된 거야</h1>
-    <h3>랭킹을 확인해봅시다!</h3>
-    <br>
-    <main>
-      <% if (users.length > 0) { %>
-        <div class="grid">
-          <% for (let user of users) { %>
-            <article>
-              <header>
-                <h1><%= user.userName %></h1>
-              </header>
-              <div>
-                <h2><%= user.score%>초</h2>
-              </div>
-            </article>
-          <% } %>
-        </div>
-      <% } else { %>
-        <h1>No Users Found!</h1>
-      <% } %>
-    </main>
-  </div>
 
-
-  </body>
-</html> -->

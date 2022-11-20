@@ -34,11 +34,15 @@ module.exports = class User {
         }
         if (level === 7) {
             return db.execute('INSERT INTO easy(userName,score,date) VALUES(?,?,CURDATE())',
-                [this.userName, this.score]);
+                [this.userName, this.score, CURDATE()]);
         }
     }
 
     static fetchAll() {
-        return db.execute('SELECT * FROM easy');
+        var sql1 = 'SELECT * FROM easy; ';
+        var sql2 = 'SELECT * FROM normal; ';
+        var sql3 = 'SELECT * FROM hard; ';
+        // return db.execute('SELECT * FROM easy');
+        return db.query(sql1 + sql2 + sql3);
     }
 };

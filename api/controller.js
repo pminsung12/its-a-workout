@@ -50,9 +50,12 @@ exports.save = (req, res, next) => {
 
 exports.rank = (req, res, next) => {
     User.fetchAll().then(([rows, fieldData]) => {
+        console.log(rows);
         res.render("rank", {
             pageTitle: "Ranking System",
-            users: rows,
+            easyUsers: rows[0],
+            normalUsers: rows[1],
+            hardUsers: rows[2],
             path: '/rank'
         });
     })
