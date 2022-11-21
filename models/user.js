@@ -25,16 +25,16 @@ module.exports = class User {
     }
     save(level) {
         if (level === 10) {
-            return db.execute('INSERT INTO hard(userName,score,date) VALUES(?,?,)',
-                [this.userName, this.score, CURDATE()]);
+            return db.execute('INSERT INTO hard(userName,score,date) VALUES(?,?,CURDATE())',
+                [this.userName, this.score]);
         }
         else if (level === 8) {
-            return db.execute('INSERT INTO normal(userName,score,date) VALUES(?,?,?)',
-                [this.userName, this.score, CURDATE()]);
+            return db.execute('INSERT INTO normal(userName,score,date) VALUES(?,?,CURDATE())',
+                [this.userName, this.score]);
         }
         if (level === 7) {
             return db.execute('INSERT INTO easy(userName,score,date) VALUES(?,?,CURDATE())',
-                [this.userName, this.score, CURDATE()]);
+                [this.userName, this.score]);
         }
     }
 
