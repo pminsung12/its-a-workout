@@ -60,7 +60,7 @@ exports.rank = (req, res, next) => {
             for (i = 1; i < len; i++) {
                 let temp = arr[i].score;
                 let tmp = arr[i];
-                for (j = i - 1; j > -1 && temp > arr[j].score; j--) {
+                for (j = i - 1; j > -1 && temp < arr[j].score; j--) {
                     // console.log(i, j);
                     arr[j + 1] = arr[j];
                 }
