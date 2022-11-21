@@ -50,12 +50,33 @@ exports.save = (req, res, next) => {
 
 exports.rank = (req, res, next) => {
     User.fetchAll().then(([rows, fieldData]) => {
-        console.log(rows);
+
+        /*
+            삽입정렬!!
+        */
+        function insertionSort(arr) {
+            const len = arr.length;
+            let i, j;
+            for (i = 1; i < len; i++) {
+                let temp = arr[i].score;
+                let tmp = arr[i];
+                for (j = i - 1; j > -1 && temp > arr[j].score; j--) {
+                    // console.log(i, j);
+                    arr[j + 1] = arr[j];
+                }
+                arr[j + 1] = tmp;
+            }
+            return arr;
+        }
+        let easyUser = insertionSort(rows[0]);
+        let normalUser = insertionSort(rows[1]);
+        let hardUser = insertionSort(rows[2]);
+
         res.render("rank", {
             pageTitle: "Ranking System",
-            easyUsers: rows[0],
-            normalUsers: rows[1],
-            hardUsers: rows[2],
+            easyUsers: easyUser,
+            normalUsers: normalUser,
+            hardUsers: hardUser,
             path: '/rank'
         });
     })
