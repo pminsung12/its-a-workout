@@ -72,6 +72,8 @@ exports.rank = (req, res, next) => {
         let normalUser = insertionSort(rows[1]);
         let hardUser = insertionSort(rows[2]);
 
+        console.log('easyUser:', easyUser);
+
         res.render("rank", {
             pageTitle: "Ranking System",
             easyUsers: easyUser,
