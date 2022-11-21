@@ -11,7 +11,7 @@ module.exports = (app) => {
     app.get("/", index.main);
 
     // 튜토리얼 페이지
-    app.get("/tutorial", index.tutorial);
+    app.get("/tutorial/:level", index.tutorial);
 
     // 게임 페이지
     app.get("/play/:level", index.play);
@@ -21,7 +21,4 @@ module.exports = (app) => {
 
     // 랭킹 페이지
     app.get("/rank", index.rank);
-
-    // 미로 테스트용
-    app.get("/test", index.test);
 }

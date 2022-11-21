@@ -81,7 +81,3 @@ exports.rank = (req, res, next) => {
         });
     })
 }
-
-exports.test = async (req, res) => {
-    return res.render("test", { pageTitle: "Tutorial" });
-}

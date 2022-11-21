@@ -30,8 +30,6 @@
     <input type="text" name="ID" maxlength="20" id="nameBox" />
   </div>
 
-  <div id="greet"></div>
-
   <div class="level-row" selected="">
     <div class="level-col">
       <a class="level-card">
@@ -115,7 +113,18 @@
   }
   function goTutorial() {
     const name = document.getElementById("nameBox").value;
-    location.href = `/tutorial/?nickname=${name}`;
+    const level = document.getElementsByClassName("level-row")[0].getAttribute("selected");
+    if (name === "") {
+      alert("이름을 입력해주세요!");
+      location.reload();
+    }
+    else if (level === "") {
+      alert("난이도를 선택해주세요!");
+      location.reload();
+    }
+    else {
+      location.href = `/tutorial/${level}?nickname=${name}`;
+    }
   }
   function showRank() {
     const name = document.getElementById("nameBox").value;
