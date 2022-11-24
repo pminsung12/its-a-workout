@@ -8,11 +8,25 @@ let poseList = [];
 let state_pose = 'None';
 let before_pose = 'None';
 let direction = 'None';
-let my_pose='None';
+let my_pose = 'None';
 let count = 0;
 let if_first_stand = false;
-var startTime = new Date().getTime();
+let radio_exercise_dict = {
+    'item-1': 'stand',
+    'item-2': 'squat',
+    'item-3': 'jump with arms',
+    'item-4': 'left side exercise',
+    'item-5': 'right side exercise',
+};
+let radio_id_dict = {
+    'item-1': 0,
+    'item-2': 1,
+    'item-3': 2,
+    'item-4': 3,
+    'item-5': 4,
 
+};
+var startTime = new Date().getTime();
 
 async function init() {
     const modelURL = URL + "model.json";
@@ -66,6 +80,16 @@ function delay(milliseconds){
 // Save in state_pose array
 async function pose_state(){
     before_pose = poseList[poseList.length - 1];
+
+    // Tutorial
+    radio_state = document.querySelector('input[name="slider"]:checked').id;
+    slider = document.getElementsByName('slider');
+    i = radio_id_dict[radio_state];
+    if (state_pose === radio_exercise_dict[radio_state]) {
+        i++;
+        i = i % slider.length;
+        slider[i].checked = true;
+    }
 
     if (count === samePoseCount) {
         state_pose = poseList[poseList.length - 1];

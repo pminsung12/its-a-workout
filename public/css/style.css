@@ -257,7 +257,7 @@ td {
 }
 
 .level-card:hover .face.face1 {
-  background: #ff0057;
+  background: #297029;
   transform: translateY(0);
 }
 
@@ -271,7 +271,7 @@ td {
 }
 
 .level-card .face.face1 .card-content img {
-  max-width: 100px;
+  max-width: 150px;
 }
 
 .level-card .face.face1 .card-content {

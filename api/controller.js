@@ -6,13 +6,15 @@ exports.main = async (req, res) => {
 }
 
 exports.tutorial = async (req, res) => {
-    return res.render("tutorial", {});
+    const nickname = req.query.nickname;
+    const level = req.params.level;
+    return res.render("tutorial", {nickname, level});
 }
 
 exports.play = async (req, res) => {
     const nickname = req.query.nickname;
     const level = req.params.level;
-    return res.render("game", { nickname, level });
+    return res.render("game", {nickname, level});
 }
 
 exports.save = (req, res) => {
@@ -42,7 +44,7 @@ function insertionSort(arr) {
     return arr;
 }
 
-exports.rank = (req, res, next) => {
+exports.rank = (req, res) => {
     const nickname = req.query.nickname;
     const score = Number(req.query.score);
     const level = Number(req.query.level);
