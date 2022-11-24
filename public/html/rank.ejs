@@ -29,14 +29,28 @@
           <div class="lboard_tabs">
             <div class="tabs">
               <ul>
-                <li data-li="today">Easy</li>
-                <li class="active" data-li="month">Normal</li>
-                <li data-li="year">Hard</li>
+                <% if (level===10) { %>
+                  <li data-li="today">Easy</li>
+                  <li data-li="month">Normal</li>
+                  <li class="active" data-li="year">Hard</li>
+                <% } else if (level===8) { %>
+                  <li data-li="today">Easy</li>
+                  <li class="active" data-li="month">Normal</li>
+                  <li data-li="year">Hard</li>
+                <% } else if (level===7) { %>
+                  <li class="active" data-li="today">Easy</li>
+                  <li data-li="month">Normal</li>
+                  <li data-li="year">Hard</li>
+                <% } %>
               </ul>
             </div>
           </div>
           <div class="lboard_wrap">
-            <div class="lboard_item today" style="display: none;">
+            <% if (level===7) { %>
+              <div class="lboard_item today" style="display: block;">
+            <% } else { %>
+              <div class="lboard_item today" style="display: none;">
+            <% } %>
               <% if (easyUsers.length > 0) { %>
                 <% for (let i = 0; i < easyUsers.length; i++) { %>
                   <% user=easyUsers[i]%>
@@ -50,7 +64,7 @@
 
                       <div class="rank_bar">
                         <div class="bar_wrap">
-                          <div class="inner_bar" style="width: 45%"></div>
+                          <div class="inner_bar" style="width: <%= (100*user.score)/easyUsers[easyUsers.length-1].score %>%"></div>
                         </div>
                       </div>
                       <div class="points">
@@ -70,7 +84,7 @@
 
                       <div class="rank_bar">
                         <div class="bar_wrap">
-                          <div class="inner_bar" style="width: 45%"></div>
+                          <div class="inner_bar" style="width: <%= (100*user.score)/easyUsers[easyUsers.length-1].score %>%"></div>
                         </div>
                       </div>
                       <div class="points">
@@ -86,7 +100,11 @@
                   <h1>아직 플레이한 유저가 없습니다!</h1>
               <% } %>
             </div>
-            <div class="lboard_item month" style="display: block;">
+            <% if (level===8) { %>
+              <div class="lboard_item month" style="display: block;">
+            <% } else { %>
+              <div class="lboard_item month" style="display: none;">
+            <% } %>
               <% if (normalUsers.length > 0) { %>
                 <% for (let i = 0; i < normalUsers.length; i++) { %>
                 <% user=normalUsers[i]%>
@@ -100,7 +118,7 @@
 
                       <div class="rank_bar">
                         <div class="bar_wrap">
-                          <div class="inner_bar" style="width: 45%"></div>
+                          <div class="inner_bar" style="width: <%= (100*user.score)/normalUsers[normalUsers.length-1].score %>%"></div>
                         </div>
                       </div>
                       <div class="points">
@@ -120,7 +138,7 @@
 
                       <div class="rank_bar">
                         <div class="bar_wrap">
-                          <div class="inner_bar" style="width: 45%"></div>
+                          <div class="inner_bar" style="width: <%= (100*user.score)/normalUsers[normalUsers.length-1].score %>%"></div>
                         </div>
                       </div>
                       <div class="points">
@@ -136,7 +154,12 @@
                   <h1>아직 플레이한 유저가 없습니다!</h1>
               <% } %>
             </div>
-            <div class="lboard_item year" style="display: none;">
+            <% if (level===10) { %>
+              <div class="lboard_item year" style="display: block;">
+            <% } else { %>
+              <div class="lboard_item year" style="display: none;">
+            <% } %>
+            
               <% if (hardUsers.length > 0) { %>
                 <% for (let i=0;i<hardUsers.length;i++) { %>
                   <% user=hardUsers[i]%>
@@ -150,7 +173,7 @@
 
                       <div class="rank_bar">
                         <div class="bar_wrap">
-                          <div class="inner_bar" style="width: 45%"></div>
+                          <div class="inner_bar" style="width: <%= (100*user.score)/hardUsers[hardUsers.length-1].score %>%"></div>
                         </div>
                       </div>
                       <div class="points">
@@ -170,7 +193,7 @@
 
                       <div class="rank_bar">
                         <div class="bar_wrap">
-                          <div class="inner_bar" style="width: 45%"></div>
+                          <div class="inner_bar" style="width: <%= (100*user.score)/hardUsers[hardUsers.length-1].score %>%"></div>
                         </div>
                       </div>
                       <div class="points">
