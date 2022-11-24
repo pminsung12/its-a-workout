@@ -43,7 +43,6 @@ function Mazing(id) {
   mazeOutputDiv.appendChild(this.mazeScore);
   mazeOutputDiv.appendChild(this.mazeMessage);
   mazeOutputDiv.style.width = this.mazeContainer.scrollWidth + "px";
-  this.setMessage("first find the key");
   this.mazeContainer.insertAdjacentElement("afterend", mazeOutputDiv);
 
   // activate control keys
@@ -56,7 +55,6 @@ function Mazing(id) {
 
 Mazing.prototype.enableSpeech = function() {
   this.utter = new SpeechSynthesisUtterance()
-  this.setMessage(this.mazeMessage.innerText);
 };
 
 Mazing.prototype.setMessage = function(text) {
@@ -73,7 +71,6 @@ Mazing.prototype.setMessage = function(text) {
 Mazing.prototype.heroTakeTreasure = function() {
   this.maze[this.heroPos].classList.remove("nubbin");
   this.heroScore += 10;
-  this.setMessage("yay, treasure!");
 }
 
 Mazing.prototype.heroTakeKey = function() {
@@ -81,19 +78,21 @@ Mazing.prototype.heroTakeKey = function() {
   this.heroHasKey = true;
   this.heroScore += 20;
   this.mazeScore.classList.add("has-key");
-  this.setMessage("you now have the key!");
 }
 
 Mazing.prototype.gameOver = function(text) {
   // de-activate control keys
   document.removeEventListener("keydown", this.keyPressHandler, false);
-  this.setMessage(text);
   this.mazeContainer.classList.add("finished");
 
   // modal 띄우기
+  const time = document.getElementById("time").innerText;
+  const min = time.slice(0, 2);
+  const sec = time.slice(3, 5);
+  const score = min * 60 + sec;
   const modal = document.getElementById("modal");
   const content = document.getElementsByClassName("content");
-  content[0].innerHTML += `<h3>스코어: ${this.heroScore}</h3>`
+  content[0].innerHTML += `<h3>스코어: ${score}</h3>`
   modal.style.display = "flex";
 };
 
@@ -115,8 +114,6 @@ Mazing.prototype.tryMoveHero = function(pos) {
     this.heroScore = Math.max(this.heroScore - 5, 0);
     if (!this.childMode && this.heroScore <= 0) {
       this.gameOver("sorry, you didn't make it");
-    } else {
-      this.setMessage("ow, that hurt!");
     }
     return;
   }
@@ -126,7 +123,6 @@ Mazing.prototype.tryMoveHero = function(pos) {
     if (this.heroHasKey) {
       this.heroWins();
     } else {
-      this.setMessage("you need a key to unlock the door");
       return;
     }
   }
@@ -157,8 +153,6 @@ Mazing.prototype.tryMoveHero = function(pos) {
     }
     if(!this.childMode && (this.heroScore <= 0)) {
       this.gameOver("sorry, you didn't make it");
-    } else {
-      this.setMessage("...");
     }
   }
 }
@@ -192,7 +186,6 @@ Mazing.prototype.mazeKeyPressHandler = function(e) {
 Mazing.prototype.setChildMode = function() {
   this.childMode = true;
   this.heroScore = 0;
-  this.setMessage("collect all the treasure");
 }
 
 Mazing.prototype.moveCharacter = function(direction) {
