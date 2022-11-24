@@ -11,6 +11,8 @@ let direction = 'None';
 let my_pose='None';
 let count = 0;
 let if_first_stand = false;
+var startTime = new Date().getTime();
+
 
 async function init() {
     const modelURL = URL + "model.json";
@@ -39,6 +41,19 @@ async function loop(timestamp) {
     webcam.update(); // update WebCam frame
     await predict();
     window.requestAnimationFrame(loop);
+    checkTime();
+}
+
+// Time
+function checkTime() {
+    let time = document.getElementById("time");
+    var nowTime = new Date().getTime()
+    var newTime = new Date(nowTime - startTime)
+    var min = newTime.getMinutes()
+    var sec = newTime.getSeconds()
+    if (min < 10) min = "0" + min
+    if (sec < 10) sec = "0" + sec
+    time.innerHTML = min + ":" + sec
 }
 
 // Delay func
@@ -101,22 +116,46 @@ async function moveCharacterByPose(){
 }
 
 async function predict() {
+    const progressBarContainer = document.querySelectorAll('.progress-bar__container');
+    const progressBar = document.querySelectorAll('.progress-bar');
     /* Prediction 1: run input through posenet */
     const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
-
     /* Prediction 2: run input through teachable machine classification model */
     const prediction = await model.predict(posenetOutput);
-
     for (let i = 0; i < maxPredictions; i++) {
-        const classPrediction =
-            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-
         if (prediction[i].probability.toFixed(2) > posePredictPecent) {
             poseList.push(prediction[i].className);
             pose_state();
         }
-        labelContainer.childNodes[i].innerHTML = classPrediction;
+        let state = prediction[i].probability.toFixed(2) * 100;
+        if (state > 80) {
+            gsap.to(progressBar[i], {
+                x: `${state}%`,
+                backgroundColor: '#f6c66b',
+                onComplete: () => {
+                    progressBarContainer[i].style.boxShadow = '0 0 5px #414141';
+                }
+            });
+        } else {
+            gsap.to(progressBar[i], {
+                x: `${state}%`,
+                backgroundColor: '#414141',
+                onComplete: () => {
+                    progressBarContainer[i].style.boxShadow = '0 0 5px #414141';
+                }
+            });
+        }
     }
+    // for (let i = 0; i < maxPredictions; i++) {
+    //     const classPrediction =
+    //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+    //
+    //     if (prediction[i].probability.toFixed(2) > posePredictPecent) {
+    //         poseList.push(prediction[i].className);
+    //         pose_state();
+    //     }
+    //     labelContainer.childNodes[i].innerHTML = classPrediction;
+    // }
     drawPose(pose);
 }
 
