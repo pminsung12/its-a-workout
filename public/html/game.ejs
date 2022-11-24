@@ -48,7 +48,9 @@
               Maze.display(id);
               MazeGame = new Mazing("maze");
           };
-          makeMaze("maze_container", 18, Number(<%= level %>));
+          //makeMaze("maze_container", 18, Number(<%= level %>));
+          makeMaze("maze_container", 18, 1);
+
         </script>
       </div>
 
@@ -87,11 +89,12 @@
             score: score,
             level: `<%= level %>`,
           },
-          error: function () {
+          error: function (error) {
+            console.log('error: ', error)
             alert("에러가 발생했습니다");
           },
           success: function (data) {
-            location.href = "/rank/?nickname=<%= nickname %>";
+            location.href = `/rank/?nickname=${"<%= nickname %>"}&score=${score}&level=${"<%= level %>"}`;
           },
         });
       }

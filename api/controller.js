@@ -16,17 +16,7 @@ exports.play = async (req, res) => {
     return res.render("game", { nickname, level });
 }
 
-// exports.save = async (req, res) => {
-//     const nickname = req.body.name;
-//     const score = req.body.score;
-//     const level = Number(req.body.level);
-//     // Save in DB
-//     const saveScore = await dao.saveScore(nickname, score, level);
-//     console.log("save completed");
-//     return res.render("rank", {});
-// }
-
-exports.save = (req, res, next) => {
+exports.save = (req, res) => {
     const nickname = req.body.name;
     const score = req.body.score;
     const level = Number(req.body.level);
@@ -34,52 +24,41 @@ exports.save = (req, res, next) => {
     user
         .save(level)
         .then(() => {
-            res.redirect('/rank');
+            return res.redirect(`/rank/?nickname=${nickname}&score=${score}&level=${level}`);
         }).catch(err => console.log(err));
-
 }
 
-// exports.rank = async (req, res) => {
-//     const scoreList = await dao.getScoreList();
-//     console.log(scoreList);
-//     return res.render("rank", {
-//         pageTitle: "Ranking System",
-//         users: scoreList
-//     });
-// }
+function insertionSort(arr) {
+    const len = arr.length;
+    let i, j;
+    for (i = 1; i < len; i++) {
+        let temp = arr[i].score;
+        let tmp = arr[i];
+        for (j = i - 1; j > -1 && temp < arr[j].score; j--) {
+            // console.log(i, j);
+            arr[j + 1] = arr[j];
+        }
+        arr[j + 1] = tmp;
+    }
+    return arr;
+}
 
 exports.rank = (req, res, next) => {
+    const nickname = req.query.nickname;
+    const score = Number(req.query.score);
+    const level = Number(req.query.level);
     User.fetchAll().then(([rows, fieldData]) => {
-
-        /*
-            삽입정렬!!
-        */
-        function insertionSort(arr) {
-            const len = arr.length;
-            let i, j;
-            for (i = 1; i < len; i++) {
-                let temp = arr[i].score;
-                let tmp = arr[i];
-                for (j = i - 1; j > -1 && temp < arr[j].score; j--) {
-                    // console.log(i, j);
-                    arr[j + 1] = arr[j];
-                }
-                arr[j + 1] = tmp;
-            }
-            return arr;
-        }
+        /* Insertion Sort */
         let easyUser = insertionSort(rows[0]);
         let normalUser = insertionSort(rows[1]);
         let hardUser = insertionSort(rows[2]);
-
-        console.log('easyUser:', easyUser);
-
         res.render("rank", {
-            pageTitle: "Ranking System",
             easyUsers: easyUser,
             normalUsers: normalUser,
             hardUsers: hardUser,
-            path: '/rank'
+            nickname: nickname,
+            score: score,
+            level: level
         });
     })
 }

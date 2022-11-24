@@ -219,6 +219,10 @@ td {
   font-family: 'Song Myung', serif;
 }
 
+#user_rank {
+  background-color: #f6c66b;
+}
+
 /* Level Card */
 
 .level-row {

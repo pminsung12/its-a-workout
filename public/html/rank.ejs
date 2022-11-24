@@ -26,7 +26,6 @@
       <br>
       <div class="wrapper">
         <div class="lboard_section">
-
           <div class="lboard_tabs">
             <div class="tabs">
               <ul>
@@ -36,87 +35,152 @@
               </ul>
             </div>
           </div>
-          
           <div class="lboard_wrap">
             <div class="lboard_item today" style="display: none;">
               <% if (easyUsers.length > 0) { %>
                 <% for (let i = 0; i < easyUsers.length; i++) { %>
                   <% user=easyUsers[i]%>
-                  <div class="lboard_mem">
-                    <p id="rank_num"> <%= i+1 %> </p>
-                    <div class="img">
-                      <img src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MjRfMTAz/MDAxNDk1NjE5MTE3Njcx.m8TE9hsAsYnB73tWkYKqMLWuDdiMn33Krn2dZEV8RFkg.yS8UzBDdAZO2tr6swZJF-SRKo46sFZ2btqoppLbvstUg.PNG.hanee218/025Pikachu_OS_anime_11.png?type=w800" alt="picture_1">
-                    </div>
-                    <p id="rank_name"> <%= user.userName %> </p>
+                  <% if (level === 7 && user.userName === nickname && user.score === score) { %>
+                    <div class="lboard_mem" id="user_rank">
+                      <p id="rank_num"> <%= i+1 %> </p>
+                      <div class="img">
+                        <img src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MjRfMTAz/MDAxNDk1NjE5MTE3Njcx.m8TE9hsAsYnB73tWkYKqMLWuDdiMn33Krn2dZEV8RFkg.yS8UzBDdAZO2tr6swZJF-SRKo46sFZ2btqoppLbvstUg.PNG.hanee218/025Pikachu_OS_anime_11.png?type=w800" alt="picture_1">
+                      </div>
+                      <p id="rank_name"> <%= user.userName %> </p>
 
-                    <div class="rank_bar">
-                      <div class="bar_wrap">
-                        <div class="inner_bar" style="width: 45%"></div>
+                      <div class="rank_bar">
+                        <div class="bar_wrap">
+                          <div class="inner_bar" style="width: 45%"></div>
+                        </div>
+                      </div>
+                      <div class="points">
+                        <%= user.score %> points
+                      </div>
+                      <div class="date">
+                        <%= String(user.date).slice(4, 15) %>
                       </div>
                     </div>
-                    <div class="points">
-                      <%= user.score %> points
+                  <% } else { %>
+                    <div class="lboard_mem">
+                      <p id="rank_num"> <%= i+1 %> </p>
+                      <div class="img">
+                        <img src="https://mblogthumb-phinf.pstatic.net/MjAxNzA1MjRfMTAz/MDAxNDk1NjE5MTE3Njcx.m8TE9hsAsYnB73tWkYKqMLWuDdiMn33Krn2dZEV8RFkg.yS8UzBDdAZO2tr6swZJF-SRKo46sFZ2btqoppLbvstUg.PNG.hanee218/025Pikachu_OS_anime_11.png?type=w800" alt="picture_1">
+                      </div>
+                      <p id="rank_name"> <%= user.userName %> </p>
+
+                      <div class="rank_bar">
+                        <div class="bar_wrap">
+                          <div class="inner_bar" style="width: 45%"></div>
+                        </div>
+                      </div>
+                      <div class="points">
+                        <%= user.score %> points
+                      </div>
+                      <div class="date">
+                        <%= String(user.date).slice(4, 15) %>
+                      </div>
                     </div>
-                    <div class="date">
-                      <%= String(user.date).slice(4, 15) %>
-                    </div>
-                  </div>
+                  <% } %>
                 <% } %>
               <% } else { %>
                   <h1>아직 플레이한 유저가 없습니다!</h1>
               <% } %>
             </div>
-
             <div class="lboard_item month" style="display: block;">
               <% if (normalUsers.length > 0) { %>
-                <% for (let i=0;i<normalUsers.length;i++) { %>
+                <% for (let i = 0; i < normalUsers.length; i++) { %>
                 <% user=normalUsers[i]%>
-                  <div class="lboard_mem">
-                    <p id="rank_num"> <%= i+1 %> </p>
-                    <div class="img">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOEwtRoO1z9zsnFi98g9vjjQSUwtm2ZKvbig&usqp=CAU" alt="picture_2">
-                    </div>
-                    <p id="rank_name"> <%= user.userName %> </p>
-                    <div class="rank_bar">
-                      <div class="bar_wrap">
-                        <div class="inner_bar" style="width: 60%"></div>
+                  <% if (level === 8 && user.userName === nickname && user.score === score) { %>
+                    <div class="lboard_mem" id="user_rank">
+                      <p id="rank_num"> <%= i+1 %> </p>
+                      <div class="img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOEwtRoO1z9zsnFi98g9vjjQSUwtm2ZKvbig&usqp=CAU" alt="picture_2">
+                      </div>
+                      <p id="rank_name"> <%= user.userName %> </p>
+
+                      <div class="rank_bar">
+                        <div class="bar_wrap">
+                          <div class="inner_bar" style="width: 45%"></div>
+                        </div>
+                      </div>
+                      <div class="points">
+                        <%= user.score %> points
+                      </div>
+                      <div class="date">
+                        <%= String(user.date).slice(4, 15) %>
                       </div>
                     </div>
-                    <div class="points">
-                      <%= user.score %> points
+                  <% } else { %>
+                    <div class="lboard_mem">
+                      <p id="rank_num"> <%= i+1 %> </p>
+                      <div class="img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOEwtRoO1z9zsnFi98g9vjjQSUwtm2ZKvbig&usqp=CAU" alt="picture_2">
+                      </div>
+                      <p id="rank_name"> <%= user.userName %> </p>
+
+                      <div class="rank_bar">
+                        <div class="bar_wrap">
+                          <div class="inner_bar" style="width: 45%"></div>
+                        </div>
+                      </div>
+                      <div class="points">
+                        <%= user.score %> points
+                      </div>
+                      <div class="date">
+                        <%= String(user.date).slice(4, 15) %>
+                      </div>
                     </div>
-                    <div class="date">
-                      <%= String(user.date).slice(4, 15) %>
-                    </div>
-                  </div>
+                  <% } %>
                 <% } %>
               <% } else { %>
                   <h1>아직 플레이한 유저가 없습니다!</h1>
               <% } %>
             </div>
-
             <div class="lboard_item year" style="display: none;">
               <% if (hardUsers.length > 0) { %>
                 <% for (let i=0;i<hardUsers.length;i++) { %>
                   <% user=hardUsers[i]%>
-                <div class="lboard_mem">
-                  <p id="rank_num"> <%= i+1 %> </p>
-                  <div class="img">
-                    <img src="https://item.kakaocdn.net/do/42993278d627d0139cd208cb73151c548f324a0b9c48f77dbce3a43bd11ce785" alt="picture_5">
-                  </div>
-                  <p id="rank_name"> <%= user.userName %> </p>
-                  <div class="rank_bar">
-                    <div class="bar_wrap">
-                      <div class="inner_bar" style="width: 90%"></div>
+                  <% if (level === 10 && user.userName === nickname && user.score === score) { %>
+                    <div class="lboard_mem" id="user_rank">
+                      <p id="rank_num"> <%= i+1 %> </p>
+                      <div class="img">
+                        <img src="https://item.kakaocdn.net/do/42993278d627d0139cd208cb73151c548f324a0b9c48f77dbce3a43bd11ce785" alt="picture_5">
+                      </div>
+                      <p id="rank_name"> <%= user.userName %> </p>
+
+                      <div class="rank_bar">
+                        <div class="bar_wrap">
+                          <div class="inner_bar" style="width: 45%"></div>
+                        </div>
+                      </div>
+                      <div class="points">
+                        <%= user.score %> points
+                      </div>
+                      <div class="date">
+                        <%= String(user.date).slice(4, 15) %>
+                      </div>
                     </div>
-                  </div>
-                  <div class="points">
-                    <%= user.score %> points
-                  </div>
-                  <div class="date">
-                    <%= String(user.date).slice(4, 15) %>
-                  </div>
-                </div>
+                  <% } else { %>
+                    <div class="lboard_mem">
+                      <p id="rank_num"> <%= i+1 %> </p>
+                      <div class="img">
+                        <img src="https://item.kakaocdn.net/do/42993278d627d0139cd208cb73151c548f324a0b9c48f77dbce3a43bd11ce785" alt="picture_5">
+                      </div>
+                      <p id="rank_name"> <%= user.userName %> </p>
+
+                      <div class="rank_bar">
+                        <div class="bar_wrap">
+                          <div class="inner_bar" style="width: 45%"></div>
+                        </div>
+                      </div>
+                      <div class="points">
+                        <%= user.score %> points
+                      </div>
+                      <div class="date">
+                        <%= String(user.date).slice(4, 15) %>
+                      </div>
+                    </div>
+                  <% } %>
                   <% } %>
                   <% } else { %>
                     <h1>아직 플레이한 유저가 없습니다!</h1>
@@ -157,7 +221,6 @@
           else{
             year.style.display = "block";
           }
-
         })
       })
     </script>
