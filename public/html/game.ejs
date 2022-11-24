@@ -104,8 +104,8 @@
     <script>
       function showRank() {
         const content = document.getElementsByClassName("content")[0].innerText;
-        console.log(content);
-        const score = Number(content.slice(17));
+        const score = Number(content.split("\n")[1].substr(5, 3));
+
         $.ajax({
           type: "POST",
           url: "/play/save",

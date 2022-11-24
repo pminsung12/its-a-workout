@@ -221,6 +221,10 @@ div.box {
     color: black;
 }
 
+#time {
+    margin: 0;
+}
+
 .progress-bar__container {
     /* margin: 10px; */
     width: 100%;
