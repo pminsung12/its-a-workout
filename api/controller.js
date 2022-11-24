@@ -1,5 +1,4 @@
 const request = require("request");
-const dao = require("./dao");
 const User = require("../models/user");
 
 exports.main = async (req, res) => {
