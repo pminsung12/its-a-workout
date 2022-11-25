@@ -170,16 +170,6 @@ async function predict() {
             });
         }
     }
-    // for (let i = 0; i < maxPredictions; i++) {
-    //     const classPrediction =
-    //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-    //
-    //     if (prediction[i].probability.toFixed(2) > posePredictPecent) {
-    //         poseList.push(prediction[i].className);
-    //         pose_state();
-    //     }
-    //     labelContainer.childNodes[i].innerHTML = classPrediction;
-    // }
     drawPose(pose);
 }
 
