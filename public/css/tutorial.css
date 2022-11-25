@@ -92,8 +92,8 @@ input[type=radio] {
     background-color: rgba(222, 222, 222, 0.7);
     border: 2px solid rgba(61, 61, 61, 0.8);
     border-radius: 8px;
-    width: 40%;
-    margin: 20px 30%;
+    width: 60%;
+    margin: 20px 20%;
     padding: 5px 0;
 }
 
@@ -119,7 +119,7 @@ input[type=radio] {
     color: #403d40;
     font-size: 1.5rem;
     font-weight: bold;
-    line-height: 24px;
+    line-height: 25px;
 }
 
 .sub-line {

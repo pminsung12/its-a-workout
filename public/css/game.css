@@ -57,7 +57,13 @@
 }
 
 #maze div.hero::after {
-    content: "\1F6B6" !important;
+    content:"";
+    background-image: url("../img/logo.png");
+    background-size: 40px 40px;
+    border-radius: 70%;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
 }
 
 #maze.face-right div.hero::after {
