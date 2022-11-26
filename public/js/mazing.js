@@ -17,8 +17,7 @@ function Mazing(id) {
   this.mazeMessage = document.createElement("div");
   this.mazeMessage.id = "maze_message";
 
-  this.heroScore = this.mazeContainer.getAttribute("data-steps") - 2;
-
+  this.heroScore = 9999;
   this.maze = [];
   this.heroPos = {};
   this.heroHasKey = false;
@@ -38,34 +37,10 @@ function Mazing(id) {
     }
   }
 
-  var mazeOutputDiv = document.createElement("div");
-  mazeOutputDiv.id = "maze_output";
-  mazeOutputDiv.appendChild(this.mazeScore);
-  mazeOutputDiv.appendChild(this.mazeMessage);
-  mazeOutputDiv.style.width = this.mazeContainer.scrollWidth + "px";
-  this.mazeContainer.insertAdjacentElement("afterend", mazeOutputDiv);
-
   // activate control keys
   //디버깅을 위해 키보드로도 움직일수 있게 함
   this.keyPressHandler = this.mazeKeyPressHandler.bind(this);
-  //console.log(this.keyPressHandler);
   document.addEventListener("keydown", this.keyPressHandler, false);
-
-}
-
-Mazing.prototype.enableSpeech = function() {
-  this.utter = new SpeechSynthesisUtterance()
-};
-
-Mazing.prototype.setMessage = function(text) {
-  this.mazeMessage.innerHTML = text;
-  this.mazeScore.innerHTML = this.heroScore;
-
-  if (this.utter) {
-    this.utter.text = text;
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(this.utter);
-  }
 }
 
 Mazing.prototype.heroTakeTreasure = function() {
@@ -87,8 +62,8 @@ Mazing.prototype.gameOver = function(text) {
 
   // modal 띄우기
   const time = document.getElementById("time").innerText;
-  const min = time.slice(0, 2);
-  const sec = time.slice(3, 5);
+  const min = Number(time.slice(0, 2));
+  const sec = Number(time.slice(3, 5));
   const score = min * 60 + sec;
   const modal = document.getElementById("modal");
   const content = document.getElementsByClassName("content");
@@ -183,11 +158,6 @@ Mazing.prototype.mazeKeyPressHandler = function(e) {
   e.preventDefault();
 }
 
-Mazing.prototype.setChildMode = function() {
-  this.childMode = true;
-  this.heroScore = 0;
-}
-
 Mazing.prototype.moveCharacter = function(direction) {
   var tryPos = new Position(this.heroPos.x, this.heroPos.y);
   switch(direction) {
@@ -196,9 +166,6 @@ Mazing.prototype.moveCharacter = function(direction) {
       tryPos.y--;
       break;
     case 'up': // up
-      tryPos.x--;
-      break;
-    case 'squat': // up
       tryPos.x--;
       break;
     case 'right': // right
