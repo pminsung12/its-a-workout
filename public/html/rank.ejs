@@ -46,7 +46,11 @@
             </div>
           </div>
           <div class="lboard_wrap">
-            <div class="lboard_item today" style="display: <%= level===7 ? 'block' : 'none' %>;">
+            <% if (level===7) { %>
+            <div class="lboard_item today" style="display: block;">
+            <% } else { %>
+            <div class="lboard_item today" style="display: none;">
+            <% } %>
               <% if (easyUsers.length > 0) { %>
                 <% for (let i = 0; i < easyUsers.length; i++) { %>
                   <% user=easyUsers[i]%>
@@ -96,7 +100,11 @@
                   <h1>아직 플레이한 유저가 없습니다!</h1>
               <% } %>
             </div>
-            <div class="lboard_item month" style="display: <% level===8 || level===null ? 'block' : 'none' %>;">
+            <% if (level===8 || level===null) { %>
+            <div class="lboard_item month" style="display: block;">
+            <% } else { %>
+            <div class="lboard_item month" style="display: none;">
+            <% } %>
               <% if (normalUsers.length > 0) { %>
                 <% for (let i = 0; i < normalUsers.length; i++) { %>
                 <% user=normalUsers[i]%>
@@ -146,8 +154,12 @@
                   <h1>아직 플레이한 유저가 없습니다!</h1>
               <% } %>
             </div>
-            <div class="lboard_item year" style="display: <% level===10 ? 'block' : 'none' %>;">
-            
+
+            <% if (level===10) { %>
+            <div class="lboard_item year" style="display: block;">
+            <% } else { %>
+            <div class="lboard_item year" style="display: none;">
+            <% } %>
               <% if (hardUsers.length > 0) { %>
                 <% for (let i=0;i<hardUsers.length;i++) { %>
                   <% user=hardUsers[i]%>
