@@ -8,13 +8,13 @@ exports.main = async (req, res) => {
 exports.tutorial = async (req, res) => {
     const nickname = req.query.nickname;
     const level = req.params.level;
-    return res.render("tutorial", {nickname, level});
+    return res.render("tutorial", { nickname, level });
 }
 
 exports.play = async (req, res) => {
     const nickname = req.query.nickname;
     const level = req.params.level;
-    return res.render("game", {nickname, level});
+    return res.render("game", { nickname, level });
 }
 
 exports.save = (req, res) => {
@@ -31,15 +31,16 @@ exports.save = (req, res) => {
 
 function insertionSort(arr) {
     const len = arr.length;
-    let i, j;
-    for (i = 1; i < len; i++) {
+    let i;
+    for (i = len - 2; i >= 0; i--) {
         let temp = arr[i].score;
         let tmp = arr[i];
-        for (j = i - 1; j > -1 && temp < arr[j].score; j--) {
-            // console.log(i, j);
-            arr[j + 1] = arr[j];
+        let j = i;
+        while (j < len - 1 && temp > arr[j + 1].score) {
+            arr[j] = arr[j + 1];
+            j += 1;
         }
-        arr[j + 1] = tmp;
+        arr[j] = tmp;
     }
     return arr;
 }
