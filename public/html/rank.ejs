@@ -100,7 +100,7 @@
                   <h1>아직 플레이한 유저가 없습니다!</h1>
               <% } %>
             </div>
-            <% if (level===8 || level===null) { %>
+            <% if (level===8 || isNaN(level)) { %>
             <div class="lboard_item month" style="display: block;">
             <% } else { %>
             <div class="lboard_item month" style="display: none;">
