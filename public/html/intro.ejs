@@ -1,143 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>너, 운동된 거야</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Song+Myung&display=swap"
+      rel="stylesheet"
+    />
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>너, 운동된 거야</title>
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Song+Myung&display=swap" rel="stylesheet">
-  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
-
-</head>
-
-<body>
-  <div class="main" id="main">
+  <body>
+    <div class="main" id="main">
       <img src="./img/logo.png" id="logo" />
       <div class="head">
+        <!-- <p id="title" style="font-size: 9vh;">너, 운동된 거야</p> -->
+        <h1 id="title">너, 운동된 거야</h1>
+        <p style="font-size: 3vh">
+          동작을 취해 캐릭터를 움직여 미로를 탈출해보세요!
+        </p>
+        <p style="font-size: 2vh">👀 이름을 입력하고 🔥 레벨을 선택하세요.</p>
+      </div>
+      <div class="name">
+        <input type="text" name="ID" maxlength="20" id="nameBox" />
+      </div>
 
-      <!-- <p id="title" style="font-size: 9vh;">너, 운동된 거야</p> -->
-      <h1 id="title">너 운동된 거야</h1>
-      <p style="font-size: 3vh">동작을 취해 캐릭터를 움직여 미로를 탈출해보세요!</p>
-      <p style="font-size: 2vh">👀 이름을 입력하고 🔥 레벨을 선택하세요.</p>
+      <div class="level-box">
+        <div class="level-row" selected="">
+          <div class="level-col">
+            <a class="level-card order1">
+              <div class="face face1">
+                <div class="card-content">
+                  <!-- <img src="../img/mazeHard.png"> -->
+                  <h2>난이도 상</h2>
+                </div>
+              </div>
+              <div class="face face2">
+                <div class="card-content">
+                  <p>
+                    미로의 두께가 넓어요.<br />운동을 많이 하고 싶다면
+                    추천해요.<br />예상 소요시간: 10분
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
 
-  
-    </div>
-    <div class="name">
-      <input type="text" name="ID" maxlength="20" id="nameBox" />
-    </div>
+          <div class="level-col">
+            <a class="level-card order2">
+              <div class="face face1">
+                <div class="card-content">
+                  <!-- <img src="../img/mazeNormal.png"> -->
+                  <h2>난이도 중</h2>
+                </div>
+              </div>
+              <div class="face face2">
+                <div class="card-content">
+                  <p>
+                    미로의 두께가 적당해요.<br />적당한 운동을 하고 싶다면
+                    추천해요.<br />예상 소요시간: 7분
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
 
-    <div class="level-box">
-      <div class="level-row" selected="">
-        <div class="level-col">
-          <a class="level-card order1">
-            <div class="face face1">
-              <div class="card-content">
-                <!-- <img src="../img/mazeHard.png"> -->
-                <h2>난이도 상</h2>
+          <div class="level-col">
+            <div class="level-card order3">
+              <div class="face face1">
+                <div class="card-content">
+                  <!-- <img src="../img/mazeEasy.png"> -->
+                  <h2>난이도 하</h2>
+                </div>
               </div>
-            </div>
-            <div class="face face2">
-              <div class="card-content">
-                <p>미로의 두께가 넓어요.<br>운동을 많이 하고 싶다면 추천해요.<br>예상 소요시간: 10분</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="level-col">
-          <a class="level-card order2">
-            <div class="face face1">
-              <div class="card-content">
-                <!-- <img src="../img/mazeNormal.png"> -->
-                <h2>난이도 중</h2>
-              </div>
-            </div>
-            <div class="face face2">
-              <div class="card-content">
-                <p>미로의 두께가 적당해요.<br>적당한 운동을 하고 싶다면 추천해요.<br>예상 소요시간: 7분</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="level-col">
-          <div class="level-card order3">
-            <div class="face face1">
-              <div class="card-content">
-                <!-- <img src="../img/mazeEasy.png"> -->
-                <h2>난이도 하</h2>
-              </div>
-            </div>
-            <div class="face face2">
-              <div class="card-content">
-                <p>미로의 두께가 좁아요.<br>가벼운 마음으로 하고 싶다면 추천해요.<br>예상 소요시간: 5분</p>
+              <div class="face face2">
+                <div class="card-content">
+                  <p>
+                    미로의 두께가 좁아요.<br />가벼운 마음으로 하고 싶다면
+                    추천해요.<br />예상 소요시간: 5분
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
+      <div class="menu">
+        <button id="startBtn" onclick="startGame();">시작</button>
+        <button id="tutoBtn" onclick="goTutorial();">튜토리얼</button>
+        <button id="rankBtn" onclick="showRank();">랭킹 보러가기</button>
       </div>
     </div>
 
-    <div class="menu">
-      <button id="startBtn" onclick="startGame();">시작</button>
-      <button id="tutoBtn" onclick="goTutorial();">튜토리얼</button>
-      <button id="rankBtn" onclick="showRank();">랭킹 보러가기</button>
-    </div>
-
-  </div>
-
-  <script>
-    $(".level-col").click(function () {
-      const row = document.getElementsByClassName("level-row")[0];
-      var level = $(this).children().children().children()[0].innerText[4];
-      if (level === "상") row.setAttribute("selected", 10);
-      else if (level === "중") row.setAttribute("selected", 8);
-      else if (level === "하") row.setAttribute("selected", 7);
-    });
-    function startGame() {
-      const name = document.getElementById("nameBox").value;
-      const level = document.getElementsByClassName("level-row")[0].getAttribute("selected");
-      if (name === "") {
-        alert("이름을 입력해주세요!");
-        location.reload();
+    <script>
+      $(".level-col").click(function () {
+        const row = document.getElementsByClassName("level-row")[0];
+        var level = $(this).children().children().children()[0].innerText[4];
+        if (level === "상") row.setAttribute("selected", 10);
+        else if (level === "중") row.setAttribute("selected", 8);
+        else if (level === "하") row.setAttribute("selected", 7);
+      });
+      function startGame() {
+        const name = document.getElementById("nameBox").value;
+        const level = document
+          .getElementsByClassName("level-row")[0]
+          .getAttribute("selected");
+        if (name === "") {
+          alert("이름을 입력해주세요!");
+          location.reload();
+        } else if (level === "") {
+          alert("난이도를 선택해주세요!");
+          location.reload();
+        } else {
+          location.href = `/play/${level}?nickname=${name}`;
+        }
       }
-      else if (level === "") {
-        alert("난이도를 선택해주세요!");
-        location.reload();
+      function goTutorial() {
+        const name = document.getElementById("nameBox").value;
+        const level = document
+          .getElementsByClassName("level-row")[0]
+          .getAttribute("selected");
+        if (name === "") {
+          alert("이름을 입력해주세요!");
+          location.reload();
+        } else if (level === "") {
+          alert("난이도를 선택해주세요!");
+          location.reload();
+        } else {
+          location.href = `/tutorial/${level}?nickname=${name}`;
+        }
       }
-      else {
-        location.href = `/play/${level}?nickname=${name}`;
+      function showRank() {
+        const name = document.getElementById("nameBox").value;
+        location.href = `/rank/?nickname=${name}`;
       }
-    }
-    function goTutorial() {
-      const name = document.getElementById("nameBox").value;
-      const level = document.getElementsByClassName("level-row")[0].getAttribute("selected");
-      if (name === "") {
-        alert("이름을 입력해주세요!");
-        location.reload();
-      }
-      else if (level === "") {
-        alert("난이도를 선택해주세요!");
-        location.reload();
-      }
-      else {
-        location.href = `/tutorial/${level}?nickname=${name}`;
-      }
-    }
-    function showRank() {
-      const name = document.getElementById("nameBox").value;
-      location.href = `/rank/?nickname=${name}`;
-    }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
