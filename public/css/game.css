@@ -1,230 +1,246 @@
 #maze_container {
-    
-    /*position: relative;*/
-    /*display: inline-block;*/
+  /*position: relative;*/
+  /*display: inline-block;*/
 }
 
 #maze {
-    /*position: relative;*/
-    background-color: #a7c53f;
-    background-image: radial-gradient(circle at 0% 0%, transparent 70%, rgba(0,0,0,0.1) 50%), radial-gradient(circle at center, rgba(0,0,0,0.1) 50%, transparent 50%), radial-gradient(circle at 100% 100%, transparent 50%, rgba(0,0,0,0.1) 50%), radial-gradient(circle at 0% 100%, transparent 50%, rgba(0,0,0,0.1) 50%), radial-gradient(circle at 100% 0%, transparent 50%, rgba(0,0,0,0.1) 50%);
-    background-size: 8em 8em;
+  /*position: relative;*/
+  background-color: #a7c53f;
+  background-image: radial-gradient(
+      circle at 0% 0%,
+      transparent 70%,
+      rgba(0, 0, 0, 0.1) 50%
+    ),
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 50%, transparent 50%),
+    radial-gradient(
+      circle at 100% 100%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.1) 50%
+    ),
+    radial-gradient(circle at 0% 100%, transparent 50%, rgba(0, 0, 0, 0.1) 50%),
+    radial-gradient(circle at 100% 0%, transparent 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 8em 8em;
 }
 
 #maze div {
-    display: flex;
+  display: flex;
 }
 
 /* 여기 수정하면 공간이 늘어남 */
 #maze div div {
-    position: relative;
-    /* width: 2em;
+  position: relative;
+  /* width: 2em;
     height: 2em; */
-    width: 3.5vw;
-    height: 3.5vh;
+  width: 3.5vw;
+  height: 3.5vh;
 }
 
 /* 아이콘 사이즈 변경 */
 #maze div div::after {
-    position: absolute;
-    left: -3px;
-    top: -4px;
-    text-align: center;
-    text-shadow: 0 0 1px black;
-    font-size: 3.5vh;
-    z-index: 10;
+  position: absolute;
+  left: -3px;
+  top: -4px;
+  text-align: center;
+  text-shadow: 0 0 1px black;
+  font-size: 3.5vh;
+  z-index: 10;
 }
 
 #maze div div.door.exit::after {
-    content: "\1F6AA";
+  content: "\1F6AA";
 }
 
 #maze div div.nubbin::after {
-    content: "\1F33C";
+  content: "\1F33C";
 }
 
 #maze div.nubbin:nth-of-type(3n)::after {
-    content: "\1F344";
+  content: "\1F344";
 }
 
 #maze div.nubbin:nth-of-type(5n)::after {
-    content: "\1F33B";
+  content: "\1F33B";
 }
 
 #maze div.nubbin:nth-of-type(7n)::after {
-    content: "\1F48E";
+  content: "\1F48E";
 }
 
 #maze div.nubbin:nth-of-type(13n)::after {
-    content: "\1F381";
+  content: "\1F381";
 }
 
 #maze div.hero::after {
-    content:"";
-    background-image: url("../img/logo.png");
-    background-size: 4vh;
-    border-radius: 70%;
-    width: 4vh;
-    height: 4vh;
-    display: inline-block;
+  content: "";
+  background-image: url("../img/logo.png");
+  background-size: 4vh;
+  border-radius: 70%;
+  width: 4vh;
+  height: 4vh;
+  display: inline-block;
 }
 
 #maze.face-right div.hero::after {
-    transform: scale(-1, 1);
+  transform: scale(-1, 1);
 }
 
 /* 벽돌 색깔 바꾸기 */
 #maze div div.wall,
 #maze div div.nubbin.wall,
 #maze div div.door.exit {
-    background-color: #674227;
-    background-image: linear-gradient(45deg, rgba(0,0,0,0.2) 45%, transparent 55%), linear-gradient(to bottom, rgba(0,0,0,0.2) 45%, transparent 55%);
-    background-size: 0.5em 0.5em;
+  background-color: #674227;
+  background-image: linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.2) 45%,
+      transparent 55%
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 45%, transparent 55%);
+  background-size: 0.5em 0.5em;
 }
 
 #maze div div.nubbin.wall::after {
-    content: "";
+  content: "";
 }
 
 #maze div div.sentinel.wall {
-    background: transparent;
+  background: transparent;
 }
 
 #maze div div.sentinel.wall::after {
-    content: "\1F40A";
+  content: "\1F40A";
 }
 
 #maze div.sentinel.wall:nth-of-type(3n)::after {
-    content: "\1F40D";
+  content: "\1F40D";
 }
 
 #maze div div.key::after {
-    content: "\1F511";
+  content: "\1F511";
 }
 
 /* 블럭 사이즈 조절 */
 #maze div div:nth-child(odd) {
-    width: 3.5vw;
+  width: 3.5vw;
 }
 
 #maze div:nth-child(odd) div {
-    height: 3.5vh;
+  height: 3.5vh;
 }
 
 #maze.finished::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: rgba(0,0,0,0.4);
-    color: #fff;
-    z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  z-index: 10;
 }
 
 #maze_output {
-    display: flex;
-    margin: 0.5em auto;
+  display: flex;
+  margin: 0.5em auto;
 }
 
-#maze_score, #maze_message {
-    font-family: "Noto Sans KR", serif;
-    font-weight: bold;
-    font-size: 1em;
+#maze_score,
+#maze_message {
+  font-family: "Noto Sans KR", serif;
+  font-weight: bold;
+  font-size: 1em;
 }
 
 #maze_score {
-    flex: 1;
-    white-space: nowrap;
-    text-align: left;
+  flex: 1;
+  white-space: nowrap;
+  text-align: left;
 }
 
 #maze_score::before {
-    content: "";
+  content: "";
 }
 
 #maze_score.has-key::after {
-    content: "\00a0\1F511";
+  content: "\00a0\1F511";
 }
 
 #maze_message {
-    flex: 3;
-    text-align: right;
+  flex: 3;
+  text-align: right;
 }
 
-
 #maze_section {
-    float: left;
-    /* padding: 10px; */
-    width: 70%;
-    margin: 2vw;
+  float: left;
+  /* padding: 10px; */
+  width: 70%;
+  margin: 2vw;
 }
 
 div.box {
-    height: 100px;
-    width: 100px;
+  height: 100px;
+  width: 100px;
 }
 
 #modal.modal-overlay {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(1.5px);
-    -webkit-backdrop-filter: blur(1.5px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: none;
 }
 
 #modal .modal-window {
-    background: white;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37 );
-    backdrop-filter: blur(13.5px);
-    -webkit-backdrop-filter: blur(13.5px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    width: 400px;
-    height: 280px;
-    position: relative;
-    top: 20px;
-    padding: 10px;
+  background: white;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 400px;
+  height: 280px;
+  position: relative;
+  top: 20px;
+  padding: 10px;
 }
 
 #modal .title {
-    padding-left: 10px;
-    display: inline;
-    color: black;
+  padding-left: 10px;
+  display: inline;
+  color: black;
 }
 
 #modal .title h2 {
-    display: inline;
+  display: inline;
 }
 
 #modal .close-area {
-    display: inline;
-    float: right;
-    padding-right: 10px;
-    cursor: pointer;
-    color: black;
+  display: inline;
+  float: right;
+  padding-right: 10px;
+  cursor: pointer;
+  color: black;
 }
 
 #modal .content {
-    margin-top: 20px;
-    padding: 0px 10px;
-    color: black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0px 10px;
+  color: black;
 }
 
 #time {
-    margin: 0;
+  margin: 0;
 }
-
