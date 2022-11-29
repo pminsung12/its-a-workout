@@ -6,22 +6,29 @@ body {
   height: 100%;
   background-image: url("../img/background.jpg");
   background-size: cover;
+   padding-top: 1px;  margin-top: -1px; 
+
+
+}
+p{
+  margin: 0;
 }
 
+
 .main {
-  width: 90%;
-  height: 100%;
-  margin-top: 60px;
-  margin-bottom: 80px;
-  margin-left: 5%;
+  width: 90vw;
+  height: 96vh;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  margin-left: 5vw;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
 }
 
 #logo {
-  width: 100px;
+  width: 10vh;
   border-radius: 70%;
-  margin-top: -35px;
+  margin-top: -2%;
   animation: rotate_img 3s linear infinite;
 }
 
@@ -39,8 +46,17 @@ body {
 .name,
 .level,
 .tutorial {
-  padding-top: 5px;
-  padding-bottom: 20px;
+  /* padding-top: 5px;
+  padding-bottom: 20px; */
+}
+.head{
+height: 15vh;
+}
+.level-box{
+height: 55vh;
+}
+.menu{
+height: 10vh;
 }
 
 #nameBox {
@@ -78,12 +94,15 @@ td {
   border: 0;
   border-radius: 10px;
   outline: 0;
-  width: 300px;
+  width: 30%;
   margin: 5px;
   padding: 15px 50px;
   font-size: 17px;
 }
+.modal-window #rankBtn,.modal-window #startBtn{
+  width: 50%;
 
+}
 #startBtn:hover,
 #tutoBtn:hover,
 #rankBtn:hover {
@@ -227,22 +246,24 @@ td {
 /* Level Card */
 
 .level-row {
+  display: flex;
+  height: 100%;
   padding: 0 100px;
 }
 
 .level-col {
-  float: left;
   width: 30%;
   padding: 1.5%;
 }
 
 .level-card {
+  height: 100%;
   position: relative;
   cursor: pointer;
 }
 
 .level-card .face {
-  height: 200px;
+  height: 50%;
   transition: 0.5s;
 }
 
@@ -251,7 +272,7 @@ td {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(100px);
+  transform: translateY(50%);
   z-index: 1;
   background: #333;
 }
@@ -262,7 +283,7 @@ td {
 }
 
 .level-card .face.face1 .card-content {
-  opacity: 0.2;
+  opacity: 0.3;
   transition: 0.5s;
 }
 
@@ -271,11 +292,11 @@ td {
 }
 
 .level-card .face.face1 .card-content img {
-  max-width: 150px;
+  /* max-width: 150px; */
 }
 
 .level-card .face.face1 .card-content {
-  margin: 10px 0 0;
+  /* margin: 10px 0 0; */
   padding: 0;
   color: #fff;
   text-align: center;
@@ -288,7 +309,7 @@ td {
   align-items: center;
   box-sizing: border-box;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-  transform: translateY(-100px);
+  transform: translateY(-50%);
 }
 
 .level-card:hover .face.face2 {
@@ -298,4 +319,72 @@ td {
 .level-card .card-content a:hover {
   background: #333;
   color: #fff;
+}
+.order1 .face1 .card-content{
+  width: 80%;
+  background-image: url("../img/mazeHard.png");
+  background-size: cover;
+}
+.order2 .face1 .card-content{
+  width: 80%;
+  background-image: url("../img/mazeNormal.png");
+  background-size: cover;
+}
+.order3 .face1 .card-content{
+  width: 80%;
+  background-image: url("../img/mazeEasy.png");
+  background-size: cover;
+}
+#webcam {
+  width: 25%;
+  height: 75vh;
+  margin: 5vh 2vw 0vh 2vw;
+
+ 
+}
+.main-content{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+}
+.card-img-top{
+  width: 25vmin;
+  height: 25vmin;
+}
+
+#webcam p{
+  margin: 0;
+  font-size: 2vh;
+
+}
+h3{
+  margin: 0;
+}
+
+.progress-bar__container {
+  margin: 5px;
+  width: 100%;
+  height: 1vh;
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.01s;
+  will-change: transform;
+  box-shadow: 0 0 5px #414141;
+}
+
+.progress-bar {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  border-radius: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: sans-serif;
 }

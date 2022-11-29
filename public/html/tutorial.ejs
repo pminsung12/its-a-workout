@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta
-            name="viewport"
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>너, 운동된 거야</title>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -22,102 +21,109 @@
     <link rel="stylesheet" type="text/css" href="../css/game.css" />
     <link rel="stylesheet" type="text/css" href="../css/tutorial.css" />
 </head>
+
 <body>
-<div class="main" id="main">
-    <img src="../img/logo.png" id="logo" />
+    <div class="main" id="main">
+        <img src="../img/logo.png" id="logo" />
 
-    <h1 id="title">너, 운동된 거야</h1>
-    <h3>동작을 취해 캐릭터를 움직여 미로를 탈출해보세요!</h3>
-
-    <!-- Webcam -->
-    <div id="webcam">
-        <h2 id="name"><%= nickname %> 님!</h2>
-        <div>
-            <canvas id="canvas"></canvas>
-        </div>
-        <h1 id="time">00:00</h1>
-        <div id="label-container"></div>
-        <div>자세 인식 중...</div>
-        <div class="progress-bar__container">
-            <div class="progress-bar"></div>
-        </div>
-        <div>⬇️ 스쿼트 하기 ⬇️</div>
-        <div class="progress-bar__container">
-            <div class="progress-bar"></div>
-        </div>
-        <div>⬆️ 팔 벌려 뛰기 ⬆️</div>
-        <div class="progress-bar__container">
-            <div class="progress-bar"></div>
-        </div>
-        <div>➡️ 오른쪽으로 스트레칭 ➡️️</div>
-        <div class="progress-bar__container">
-            <div class="progress-bar"></div>
-        </div>
-        <div>⬅️ 왼쪽으로 스트레칭 ⬅️</div>
-        <div class="progress-bar__container">
-            <div class="progress-bar"></div>
-        </div>
-        <div>가만히 서️ 있기</div>
-        <div class="progress-bar__container">
-            <div class="progress-bar"></div>
-        </div>
-    </div>
-
-    <!-- Tutorial -->
-    <div class="container-carousel">
-        <input type="radio" name="slider" id="item-1" checked>
-        <input type="radio" name="slider" id="item-2">
-        <input type="radio" name="slider" id="item-3">
-        <input type="radio" name="slider" id="item-4">
-        <input type="radio" name="slider" id="item-5">
-
-        <div class="cards">
-            <label class="card-carousel" for="item-1" id="song-1">
-                <img src="../img/stand.gif" class="cardImg">
-            </label>
-            <label class="card-carousel" for="item-2" id="song-2">
-                <img src="../img/squat.gif" class="cardImg">
-            </label>
-            <label class="card-carousel" for="item-3" id="song-3">
-                <img src="../img/what.gif" class="cardImg">
-            </label>
-            <label class="card-carousel" for="item-4" id="song-4">
-                <img src="../img/left.gif" class="cardImg">
-            </label>
-            <label class="card-carousel" for="item-5" id="song-5">
-                <img src="../img/right.gif" class="cardImg">
-            </label>
-        </div>
-        <div class="player">
-            <div class="upper-part">
-                <div class="info-area" id="test">
-                    <label class="song-info" id="song-info-1">
-                        <div class="title">가만히 서 있으세요. 캐릭터가 가만히 있게 됩니다.</div>
+        <h1 id="title">너, 운동된 거야</h1>
+        <!-- <h3>동작을 취해 캐릭터를 움직여 미로를 탈출해보세요!</h3> -->
+<div class="main-content">
+    
+            <!-- Webcam -->
+            <div id="webcam">
+                <h2 id="name">
+                    <%= nickname %> 님!
+                </h2>
+                <div>
+                    <canvas class="card-img-top" id="canvas" ></canvas>
+                </div>
+                <h1 id="time">00:00</h1>
+                <div id="label-container"></div>
+                <p>자세 인식 중...</p>
+                <div class="progress-bar__container">
+                    <div class="progress-bar"></div>
+                </div>
+                <p>⬇️ 스쿼트 하기 ⬇️</p>
+                <div class="progress-bar__container">
+                    <div class="progress-bar"></div>
+                </div>
+                <p>⬆️ 팔 벌려 뛰기 ⬆️</p>
+                <div class="progress-bar__container">
+                    <div class="progress-bar"></div>
+                </div>
+                <p>⬅️ 왼쪽으로 스트레칭 ⬅️</p>
+                <div class="progress-bar__container">
+                    <div class="progress-bar"></div>
+                </div>
+                <p>➡️ 오른쪽으로 스트레칭 ➡️</p>
+                <div class="progress-bar__container">
+                    <div class="progress-bar"></div>
+                </div>
+                <p>가만히 서 있기</p>
+                <div class="progress-bar__container">
+                    <div class="progress-bar"></div>
+                </div>
+                
+            </div>
+    
+            <!-- Tutorial -->
+            <div class="container-carousel">
+                <input type="radio" name="slider" id="item-1" checked>
+                <input type="radio" name="slider" id="item-2">
+                <input type="radio" name="slider" id="item-3">
+                <input type="radio" name="slider" id="item-4">
+                <input type="radio" name="slider" id="item-5">
+    
+                <div class="cards">
+                    <label class="card-carousel" for="item-1" id="song-1">
+                        <img src="../img/stand.gif" class="cardImg">
                     </label>
-                    <label class="song-info" id="song-info-2">
-                        <div class="title">스쿼트를 하세요. 캐릭터가 아래로 이동합니다.</div>
+                    <label class="card-carousel" for="item-2" id="song-2">
+                        <img src="../img/squat.gif" class="cardImg">
                     </label>
-                    <label class="song-info" id="song-info-3">
-                        <div class="title">팔 벌려 뛰기를 하세요. 캐릭터가 위로 이동합니다.</div>
+                    <label class="card-carousel" for="item-3" id="song-3">
+                        <img src="../img/what.gif" class="cardImg">
                     </label>
-                    <label class="song-info" id="song-info-4">
-                        <div class="title">왼쪽으로 스트레칭 하세요. 캐릭터가 왼쪽으로 이동합니다.</div>
+                    <label class="card-carousel" for="item-4" id="song-4">
+                        <img src="../img/left.gif" class="cardImg">
                     </label>
-                    <label class="song-info" id="song-info-5">
-                        <div class="title">오른쪽으로 스트레칭 하세요. 캐릭터가 오른쪽으로 이동합니다.</div>
+                    <label class="card-carousel" for="item-5" id="song-5">
+                        <img src="../img/right.gif" class="cardImg">
                     </label>
                 </div>
+                <div class="player">
+                    <div class="upper-part">
+                        <div class="info-area" id="test">
+                            <label class="song-info" id="song-info-1">
+                                <div class="title">가만히 서 있으세요. 캐릭터가 가만히 있게 됩니다.</div>
+                            </label>
+                            <label class="song-info" id="song-info-2">
+                                <div class="title">스쿼트를 하세요. 캐릭터가 아래로 이동합니다.</div>
+                            </label>
+                            <label class="song-info" id="song-info-3">
+                                <div class="title">팔 벌려 뛰기를 하세요. 캐릭터가 위로 이동합니다.</div>
+                            </label>
+                            <label class="song-info" id="song-info-4">
+                                <div class="title">왼쪽으로 스트레칭 하세요. 캐릭터가 왼쪽으로 이동합니다.</div>
+                            </label>
+                            <label class="song-info" id="song-info-5">
+                                <div class="title">오른쪽으로 스트레칭 하세요. 캐릭터가 오른쪽으로 이동합니다.</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div> <img src="../img/arrow.png" id="arrow" onclick="startGame();"> </div>
             </div>
-        </div>
-        <div> <img src="../img/arrow.png" id="arrow" onclick="startGame();"> </div>
-    </div>
 </div>
-<script>
-    function startGame() {
-        const name = "<%= nickname %>";
-        const level = Number(<%= level %>);
-        location.href = `/play/${level}?nickname=${name}`;
-    }
-</script>
+    </div>
+    <script>
+        function startGame() {
+            const name = "<%= nickname %>";
+            const level = Number(<%= level %>);
+            location.href = `/play/${level}?nickname=${name}`;
+        }
+    </script>
 </body>
+
 </html>
