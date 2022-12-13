@@ -28,7 +28,7 @@ This program aims to help users to play web-based maze game based on movements r
 </tr>
 <tr>
     <td>
-      <b><a href="https://github.com/YangDongsuk">Dongsuk Yank</a></b>
+      <b><a href="https://github.com/YangDongsuk">Dongsuk Yang</a></b>
     </td>
     <td>Motion Recognition, Frontend</td>
 </tr>
