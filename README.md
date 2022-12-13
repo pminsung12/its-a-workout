@@ -34,7 +34,7 @@ This program aims to help users to play web-based maze game based on movements r
 </tr>
 <tr>
     <td><b>Ilmook Jung</b></td>
-    <td>Motion Recognition, Fronted</td>
+    <td>Motion Recognition</td>
 </tr>
 </table>
 
