@@ -1,4 +1,4 @@
-const URL = "https://teachablemachine.withgoogle.com/models/srhvRHVyJ/";
+const URL = "https://teachablemachine.withgoogle.com/models/UEjVkwgQz/";
 
 const samePoseCount = 10; // 같은 포즈 5번 이상 나올 시 포즈 변경된 것으로 간주
 const posePredictPecent = 0.75; // 포즈 확률 0.7 이상일 시 해당 포즈로 간주
