@@ -38,5 +38,9 @@ This program aims to help users to play web-based maze game based on movements r
 </tr>
 </table>
 
+### Awards
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/53158200/208281317-e0e1125c-18a1-4490-a924-feb22d1c07e8.png">
+Bronze Prize at 2022 SKKU AI-Education Capstone Design Competition
+
 ### For more information...
 Please refer to [this page](https://github.com/its-a-workout/its-a-workout/blob/main/poster.pdf).
